@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HCP 2026 - 特邀报告</title>
+  <style>
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #14090d;
+  font-family: "Hiragino Sans GB", "STHeiti", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  color: #17191f;
+}
+body {
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+}
+.poster {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(80, 12, 23, .92) 0%, rgba(124, 20, 39, .90) 38%, rgba(248, 241, 231, .96) 38.1%, rgba(255, 250, 243, 1) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center top / cover no-repeat;
+}
+.poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(216, 177, 95, .22), transparent 26%),
+    linear-gradient(135deg, rgba(255,255,255,.08), transparent 42%),
+    linear-gradient(180deg, rgba(79, 12, 23, .10), rgba(79, 12, 23, .02));
+  pointer-events: none;
+}
+.top-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: linear-gradient(90deg, #a71930 0%, #d8b15f 78%, #fff2cc 100%);
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 54px 58px 48px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: rgba(255,255,255,.92);
+}
+.brand img {
+  width: 236px;
+  filter: brightness(0) invert(1);
+}
+.brand .series {
+  margin-left: auto;
+  color: #f7dfaa;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 6px;
+}
+.hero-title {
+  margin-top: 34px;
+  color: #fff;
+}
+.hero-title .kicker {
+  color: #f7dfaa;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 12px;
+}
+.hero-title h1 {
+  margin: 16px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 104px;
+  line-height: .9;
+  letter-spacing: 2px;
+}
+.hero-title .cn {
+  margin-top: 14px;
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 900;
+}
+.hero-title .en {
+  margin-top: 6px;
+  width: 850px;
+  color: rgba(255,255,255,.74);
+  font-size: 18px;
+  line-height: 1.42;
+}
+.meta-strip {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+.meta-pill {
+  padding: 10px 16px;
+  color: #4f0c17;
+  background: #f4dfb0;
+  border-radius: 999px;
+  font-size: 19px;
+  font-weight: 900;
+}
+.content {
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  top: 520px;
+  bottom: 94px;
+}
+.footer {
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #761120;
+  border-top: 2px solid rgba(167,25,48,.24);
+  padding-top: 18px;
+  font-size: 20px;
+  font-weight: 900;
+}
+.footer .url {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 1px;
+}
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  color: #761120;
+}
+.section-title h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 900;
+  text-shadow: 0 6px 18px rgba(0,0,0,.22);
+}
+.section-title .en {
+  color: #d8b15f;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  color: #fff;
+  background: #a71930;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+.muted {
+  color: #69707d;
+}
+
+.keynote-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+.keynote-card {
+  display: grid;
+  grid-template-columns: 142px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 280px;
+  padding: 16px;
+  background: rgba(255,255,255,.90);
+  border: 1px solid rgba(167,25,48,.18);
+  border-radius: 17px;
+  box-shadow: 0 12px 34px rgba(79,12,23,.10);
+}
+.keynote-photo {
+  width: 142px;
+  height: 178px;
+  object-fit: cover;
+  object-position: center 42%;
+  border-radius: 12px;
+  border: 1px solid rgba(118,17,32,.18);
+}
+.keynote-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.keynote-name {
+  color: #761120;
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+.keynote-aff {
+  margin-top: 4px;
+  color: #69707d;
+  font-size: 15px;
+  font-weight: 800;
+}
+.keynote-talk {
+  margin-top: 9px;
+  color: #17191f;
+  font-size: 20px;
+  line-height: 1.28;
+  font-weight: 900;
+}
+.abstract-label {
+  margin-top: 10px;
+  color: #a2783c;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+.abstract {
+  margin-top: 5px;
+  color: #333844;
+  font-size: 15.8px;
+  line-height: 1.42;
+  text-align: justify;
+}
+.abstract p {
+  margin: 0;
+}
+</style>
+</head>
+<body>
+  <article class="poster">
+    <div class="top-rule"></div>
+    <div class="inner">
+      <header class="brand">
+        <img src="../../assets/sdu-logo.svg" alt="山东大学" />
+        <div class="series">宣传海报</div>
+      </header>
+      <section class="hero-title">
+        <div class="kicker">第 九 届</div>
+        <h1>HCP 2026</h1>
+        <div class="cn">难解问题的理论、算法与应用研讨会</div>
+        <div class="meta-strip">
+          <div class="meta-pill">2026年7月31日-8月2日</div>
+          <div class="meta-pill">山东大学青岛校区</div>
+        </div>
+      </section>
+      <main class="content">
+        <div class="section-title"><h2>特邀报告</h2></div>
+        <div class="keynote-list"><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/yuhong-dai.png" alt="戴彧虹" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">特邀报告</span><div class="keynote-name">戴彧虹</div></div>
+    <div class="keynote-aff">中国科学院数学与系统科学研究院</div>
+    <div class="keynote-talk">大规模设施选址问题的精确求解</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>待定</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/naijun-zhan.jpeg" alt="詹乃军" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">特邀报告</span><div class="keynote-name">詹乃军</div></div>
+    <div class="keynote-aff">北京大学计算机学院</div>
+    <div class="keynote-talk">随机动态系统与混成系统的验证</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>本报告介绍我们近期关于随机动态系统与混成系统验证的工作，包括基于矩的方法、基于随机障碍证书的方法、可达-避障验证，以及容忍安全性与容忍可达-避障验证。报告还将讨论随机求解，这是概率程序和随机混成系统验证中的一个基础问题。</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/xiaoming-sun.png" alt="孙晓明" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">特邀报告</span><div class="keynote-name">孙晓明</div></div>
+    <div class="keynote-aff">中国科学院计算技术研究所</div>
+    <div class="keynote-talk">量子线路优化</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>量子计算依托量子叠加、纠缠等独特量子力学效应构建新的计算范式，Shor算法、Grover算法等显示其在特定计算任务上具备超越经典计算的加速潜力。现阶段量子硬件普遍存在量子比特规模有限、相干时间短、门噪声显著等瓶颈，制约各类量子算法在含噪声中规模量子设备上的稳定、高效执行。量子线路综合与优化作为量子编译的重要环节，是缓解硬件噪声约束、提升量子程序运行保真度的关键技术。本报告将梳理线路优化领域的一些核心问题，并汇报课题组在线路化简、硬件适配映射、深度压缩等方向的一些进展，以及衍生出的优化问题。</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/qilong-feng.jpeg" alt="冯启龙" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">特邀报告</span><div class="keynote-name">冯启龙</div></div>
+    <div class="keynote-aff">中南大学计算机学院</div>
+    <div class="keynote-talk">面向大规模数据的机器学习算法优化</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>随着数据规模的快速增长，传统机器学习算法在计算开销、动态更新和数据约束等方面面临巨大挑战。本报告主要介绍大规模数据场景下机器学习算法优化方法，重点讨论聚类与回归问题的高效算法设计与分析。针对聚类问题，介绍近线性时间算法、增量学习算法，面向动态更新的算法，并讨论如何去除诸多算法依赖的离散度因子。面向数据约束挑战，介绍带公平性约束的模型与算法，以及线聚类等结构化聚类问题的优化思路。在数据维度处理方面，从子集选择角度出发，介绍高效数据降维算法的设计。针对回归问题，从coreset构造和局部搜索等角度出发，介绍如何进行稀疏数据表示和高效算法设计。</p></div>
+  </div>
+</article></div>
+      </main>
+      <footer class="footer">
+        <div>山东大学网络空间安全学院 · 青岛</div>
+        <div class="url">hcp2026.sincst.cn</div>
+      </footer>
+    </div>
+  </article>
+</body>
+</html>

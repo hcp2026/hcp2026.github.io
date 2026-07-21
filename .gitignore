@@ -3,3 +3,6 @@
 *.doc
 *.xlsx
 ~$*
+promo-posters/tmp/
+__pycache__/
+*.pyc
