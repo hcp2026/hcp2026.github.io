@@ -4,5 +4,6 @@
 *.xlsx
 ~$*
 promo-posters/tmp/
+speaker-posters/tmp/
 __pycache__/
 *.pyc

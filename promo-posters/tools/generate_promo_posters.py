@@ -690,8 +690,7 @@ def main_html() -> str:
       </div>
     </div>
   </section>
-</div>
-<div class="main-note">报告 / 海报征集截止日期：2026年7月31日。欢迎提交近期科研成果、工业案例和比赛获奖作品。</div>"""
+</div>"""
     return poster_shell("大会主海报", "", body, MAIN_CSS)
 
 
@@ -728,7 +727,7 @@ AGENDA_BLOCKS = [
             ("14:30-15:00", "王肇国", "FM-Agent：面向大型系统软件的霍尔范式自动化推理智能体及领域实战", ""),
             ("15:00-15:30", "李旻", "面向硬件形式化难例求解的智能体路线", ""),
             ("15:30-15:45", "茶歇", "", "break"),
-            ("15:45-16:45", "圆桌讨论", "关于人工智能的一些讨论", "activity"),
+            ("15:45-16:45", "圆桌讨论", "AI时代的算法研究", "activity"),
             ("16:45-17:30", "户外交流", "", "activity"),
             ("17:30-", "晚餐", "", "activity"),
         ],
@@ -755,15 +754,25 @@ AGENDA_BLOCKS = [
             ("14:30-15:00", "周春宁", "开放密码分析平台（OCP）：面向对称密码的自动化密码分析平台", ""),
             ("15:00-15:30", "茶歇", "", "break"),
             ("15:30-16:00", "张昕荻", "SAT求解及其在密码分析中的应用", ""),
-            ("16:00-16:30", "樊燕红", "待定", ""),
+            ("16:00-16:30", "樊燕红", "对称密码的自动化分析与设计技术", ""),
         ],
     },
+]
+
+AGENDA_RENDER_ORDER = [
+    "7月31日 星期五",
+    "8月1日 上午",
+    "8月2日 上午",
+    "8月1日 下午",
+    "8月2日 下午",
 ]
 
 
 def agenda_html() -> str:
     cards = []
-    for block in AGENDA_BLOCKS:
+    blocks_by_date = {block["date"]: block for block in AGENDA_BLOCKS}
+    for date in AGENDA_RENDER_ORDER:
+        block = blocks_by_date[date]
         rows = []
         for time, name, title, row_cls in block["rows"]:
             cls = f' class="{row_cls}"' if row_cls else ""
@@ -1019,7 +1028,11 @@ def main() -> None:
     ensure_generated_assets()
     speakers = extract_speakers()
     html_paths = write_html_files(speakers)
-    pngs = render_all(html_paths)
+    supporting_paths = [path for path in html_paths if path.name != "01-main-poster.html"]
+    pngs = render_all(supporting_paths)
+    main_poster = copy_main_poster()
+    export_from_png(main_poster)
+    pngs.insert(0, main_poster)
     zip_outputs()
     write_readme()
     for path in pngs:

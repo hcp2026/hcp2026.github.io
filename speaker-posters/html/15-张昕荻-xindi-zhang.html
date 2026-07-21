@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HCP 2026 · 张昕荻</title>
+  <style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #130710; }
+body {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+  color: #fff;
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+.poster {
+  position: relative;
+  width: 1080px;
+  min-height: 1920px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(42, 29, 69, .90) 0%, rgba(92, 35, 55, .88) 44%, rgba(80, 4, 18, .96) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center / cover no-repeat;
+  box-shadow: 0 22px 80px rgba(0,0,0,.38);
+}
+.poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 22% 16%, rgba(255, 226, 163, .18), transparent 30%),
+    linear-gradient(180deg, rgba(12, 9, 26, .18), rgba(63, 4, 16, .46));
+  pointer-events: none;
+}
+.top-rule {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 14px;
+  background: linear-gradient(90deg, #a71930, #d8b15f);
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  padding: 82px 78px 62px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: rgba(255,255,255,.90);
+}
+.brand img {
+  width: 252px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+.brand .tag {
+  margin-left: auto;
+  color: #f7dfaa;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 8px;
+}
+.event {
+  margin-top: 72px;
+}
+.event .kicker {
+  color: #f7dfaa;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 16px;
+}
+.event h1 {
+  margin: 24px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 132px;
+  line-height: .92;
+  letter-spacing: 4px;
+}
+.event .subtitle {
+  margin-top: 22px;
+  font-size: 33px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.event .en {
+  margin-top: 10px;
+  max-width: 780px;
+  color: rgba(255,255,255,.78);
+  font-size: 20px;
+  line-height: 1.45;
+}
+.speaker-head {
+  display: grid;
+  grid-template-columns: 272px minmax(0, 1fr);
+  gap: 34px;
+  margin-top: 66px;
+  align-items: start;
+}
+.photo {
+  width: 272px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 48%;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 16px;
+  box-shadow: 0 16px 44px rgba(0,0,0,.36);
+}
+.speaker-info {
+  padding-top: 6px;
+}
+.speaker-info .label {
+  display: inline-flex;
+  padding: 8px 14px;
+  color: #fff;
+  background: #a71930;
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+.speaker-info h2 {
+  margin: 18px 0 0;
+  font-size: 52px;
+  line-height: 1.16;
+}
+.aff {
+  margin-top: 12px;
+  color: rgba(255,255,255,.76);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.title-box {
+  margin-top: 26px;
+  padding: 22px 26px;
+  background: rgba(255,255,255,.10);
+  border-left: 7px solid #f7dfaa;
+  border-radius: 0 12px 12px 0;
+}
+.title-box .lab {
+  color: #f7dfaa;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+.title-box .title {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.38;
+}
+.section {
+  margin-top: 46px;
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.section-head .cn {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+}
+.section-head .en {
+  color: rgba(255,255,255,.52);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.section-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,.22);
+}
+.prose {
+  color: rgba(255,255,255,.92);
+  font-size: 22px;
+  line-height: 1.9;
+  text-align: justify;
+}
+.prose p { margin: 0 0 14px; }
+.bio-card {
+  padding: 24px 28px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 16px;
+}
+.footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 54px;
+  padding: 30px 78px 44px;
+  border-top: 1px solid rgba(255,255,255,.20);
+  text-align: center;
+}
+.footer .meta {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  color: #f7dfaa;
+  font-size: 20px;
+  font-weight: 800;
+}
+.footer .url {
+  margin-top: 12px;
+  color: rgba(255,255,255,.86);
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+<body>
+  <article class="poster">
+    <div class="top-rule"></div>
+    <div class="inner">
+      <header class="brand">
+        <img src="../../assets/sdu-logo.svg" alt="山东大学" />
+        <div class="tag">报告海报</div>
+      </header>
+
+      <section class="event">
+        <div class="kicker">第 九 届</div>
+        <h1>HCP 2026</h1>
+        <div class="subtitle">难解问题的理论、算法与应用研讨会</div>
+      </section>
+
+      <section class="speaker-head">
+        <img class="photo" src="../../assets/speakers/xindi-zhang.png" alt="张昕荻" />
+        <div class="speaker-info">
+          <div class="label">密码分析专题</div>
+          <h2>张昕荻</h2>
+          <div class="aff">中国科学院软件研究所</div>
+          <div class="title-box">
+            <div class="lab">报告题目</div>
+            <div class="title">SAT求解及其在密码分析中的应用</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><span class="cn">报告摘要</span></div>
+        <div class="prose"><p>SAT是密码分析的重要基础工具，本报告将重点围绕其串、并行求解及LLM加速技术，介绍其在密码分析中的应用。串行求解方面，针对大规模约束冗余的方程组求解问题，本报告将介绍一种动态添加约束的增量求解方法，助力斩获“强网杯”冠军。并行求解方面，将介绍基于多样性与关键变量采样的分治并行求解技术。PRS求解器多次在国际竞赛中夺冠，在密码样例上实现千核规模持续加速，并应用于哈希碰撞分析。最后，介绍大模型辅助的并行SAT求解方法，并在ASCON线性分析中成功突破4轮最优活跃S盒边界。</p></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><span class="cn">个人简介</span></div>
+        <div class="bio-card"><div class="prose"><p>张昕荻，中国科学院软件研究所，助理研究员，长期从事SAT求解及形式化应用的研究，于CAV、SAT、DAC、FM等会议及期刊发表学术论文20余篇。其研究工作获评国际SAT协会“最佳博士学位论文奖”（每年全球一名，亚洲首个）、国际SAT会议“最佳论文奖”（亚洲首个）、中科院优秀博士学位论文等。其研制的求解器曾多次于国际SAT、SMT、FLoC等比赛夺冠，相关技术落地于国内多家头部企业，并应用于密码分析领域，获“强网杯”密码数学专项赛全国冠军。他曾获中科院院长特别奖等荣誉，并获中国教育发展基金会“集成电路人才培养”资助。主持或参与国自然青年基金、网安重大专项、重点研发、国自然重点等项目。</p></div></div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="meta"><span>2026.07.31 – 08.02</span><span>山东大学青岛校区</span></div>
+      <div class="url">hcp2026.sincst.cn</div>
+    </footer>
+  </article>
+</body>
+</html>
