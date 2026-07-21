@@ -9,7 +9,7 @@
     />
     <title>HCP 2026 | 山东大学</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260712-talks" />
   </head>
   <body>
     <a class="skip-link" href="#summary">跳转到会议简介</a>
@@ -24,9 +24,10 @@
         <nav class="site-nav" id="site-nav" aria-label="主导航">
           <a href="#home">首页</a>
           <a href="#summary">会议简介</a>
-          <a href="#schedule">会议日程</a>
+          <a href="#schedule">报告信息</a>
           <a href="#registration">会议注册</a>
           <a href="#hotel">酒店信息</a>
+          <a href="#transport">交通信息</a>
           <a href="#cfp">报告/海报征集</a>
           <a href="#organization">组织机构</a>
           <a href="#contact">联系我们</a>
@@ -134,99 +135,344 @@
           </div>
         </div>
       </section>
+
     
       <section class="section" id="schedule">
         <div class="container">
           <div class="section-heading">
             <div>
-              <p class="section-kicker">Program</p>
-              <h2>会议日程 (2026年7月31日-8月2日)</h2>
+              <p class="section-kicker">Talks</p>
+              <h2>报告信息</h2>
             </div>
-            <p>正式报告人、题目和具体时间安排将陆续更新。</p>
+            <p>议程将持续更新。点击议程中的报告题目或报告卡片可查看摘要和报告人简介。</p>
           </div>
-    
-          <div class="schedule-layout">
-            <div class="day-block">
-              <div class="day-title">
-                <span>7月31日</span>
-                <h3>报到与欢迎仪式</h3>
+
+          <div class="schedule-layout scope-program">
+            <article class="day-block">
+              <h3 class="day-heading">8月1日 上午</h3>
+              <table class="program-table" aria-label="8月1日上午议程">
+                <thead>
+                  <tr>
+                    <th>时间</th>
+                    <th>报告人</th>
+                    <th>报告题目</th>
+                    <th>主持人</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="row-break">
+                    <td class="col-time">09:00-09:10</td>
+                    <td colspan="3">开幕式、致辞</td>
+                  </tr>
+                  <tr data-sid="yuhong-dai">
+                    <td class="col-time">09:10-09:40</td>
+                    <td>
+                      <strong>戴彧虹</strong>
+                      <div class="aff">中国科学院数学与系统科学研究院</div>
+                    </td>
+                    <td class="col-content">
+                      <button class="program-title-button" type="button" data-speaker-open="yuhong-dai">On exact solutions for large-scale facility location</button>
+                    </td>
+                    <td class="chair-cell"></td>
+                  </tr>
+                  <tr data-sid="naijun-zhan">
+                    <td class="col-time">09:40-10:10</td>
+                    <td>
+                      <strong>詹乃军</strong>
+                      <div class="aff">北京大学计算机学院</div>
+                    </td>
+                    <td class="col-content">
+                      <button class="program-title-button" type="button" data-speaker-open="naijun-zhan">Verification of Stochastic Dynamical and Hybrid Systems</button>
+                    </td>
+                    <td class="chair-cell"></td>
+                  </tr>
+                  <tr class="tea-break">
+                    <td class="col-time">10:10-10:40</td>
+                    <td colspan="3">茶歇</td>
+                  </tr>
+                  <tr data-sid="xiaoming-sun">
+                    <td class="col-time">10:40-11:10</td>
+                    <td>
+                      <strong>孙晓明</strong>
+                      <div class="aff">中国科学院计算技术研究所</div>
+                    </td>
+                    <td class="col-content">
+                      <button class="program-title-button" type="button" data-speaker-open="xiaoming-sun">量子线路优化</button>
+                    </td>
+                    <td class="chair-cell"></td>
+                  </tr>
+                  <tr data-sid="qilong-feng">
+                    <td class="col-time">11:10-11:40</td>
+                    <td>
+                      <strong>冯启龙</strong>
+                      <div class="aff">中南大学计算机学院</div>
+                    </td>
+                    <td class="col-content">
+                      <button class="program-title-button" type="button" data-speaker-open="qilong-feng">面向大规模数据的机器学习算法优化</button>
+                    </td>
+                    <td class="chair-cell"></td>
+                  </tr>
+                  <tr class="row-break">
+                    <td class="col-time">11:40-14:30</td>
+                    <td colspan="3">午餐 / 休息</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="day-block">
+              <h3 class="day-heading">8月1日 下午</h3>
+              <table class="program-table compact" aria-label="8月1日下午议程">
+                <thead>
+                  <tr>
+                    <th>时间</th>
+                    <th>安排</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-time">14:00-15:30</td>
+                    <td>
+                      AI 主题报告（顺序待定）：
+                      <button class="program-title-button" type="button" data-speaker-open="zhaoguo-wang">王肇国</button>、
+                      <button class="program-title-button" type="button" data-speaker-open="mingxuan-yuan">袁明轩</button>、
+                      <button class="program-title-button" type="button" data-speaker-open="min-li">李旻</button>
+                    </td>
+                  </tr>
+                  <tr class="tea-break">
+                    <td class="col-time">15:30-15:45</td>
+                    <td>茶歇</td>
+                  </tr>
+                  <tr>
+                    <td class="col-time">15:45-16:45</td>
+                    <td>Panel Discussion：关于 AI 的一些讨论（其他待定）</td>
+                  </tr>
+                  <tr>
+                    <td class="col-time">16:45-17:30</td>
+                    <td>滨海公园徒步</td>
+                  </tr>
+                  <tr>
+                    <td class="col-time">17:30-</td>
+                    <td>晚餐</td>
+                  </tr>
+                  <tr>
+                    <td class="col-time">18:30-</td>
+                    <td>大巴车摆渡到市区</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="day-block">
+              <h3 class="day-heading">8月2日 上午</h3>
+              <table class="program-table compact" aria-label="8月2日上午议程">
+                <thead>
+                  <tr>
+                    <th>时间</th>
+                    <th>安排</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-time">09:00-10:00</td>
+                    <td>
+                      组合优化与运筹报告（报告人顺序待定）：
+                      <button class="program-title-button" type="button" data-speaker-open="yixin-cao">操宜新</button>、
+                      <button class="program-title-button" type="button" data-speaker-open="zhendong-lei">雷震东</button>、
+                      <button class="program-title-button" type="button" data-speaker-open="hu-qin">秦虎</button>、
+                      <button class="program-title-button" type="button" data-speaker-open="yixiao-huang">黄一潇</button>
+                    </td>
+                  </tr>
+                  <tr class="tea-break">
+                    <td class="col-time">10:00-10:30</td>
+                    <td>茶歇</td>
+                  </tr>
+                  <tr>
+                    <td class="col-time">10:30-11:30</td>
+                    <td>组合优化与运筹报告（续）</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="day-block">
+              <h3 class="day-heading">8月2日 下午</h3>
+              <table class="program-table compact" aria-label="8月2日下午议程">
+                <thead>
+                  <tr>
+                    <th>时间</th>
+                    <th>安排</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-time">14:00-15:00</td>
+                    <td>
+                      密码报告（报告人顺序待定）：
+                      <button class="program-title-button" type="button" data-speaker-open="emanuele-bellini">Emanuele Bellini</button>、
+                      <button class="program-title-button" type="button" data-speaker-open="chunning-zhou">周春宁</button>、
+                      <button class="program-title-button" type="button" data-speaker-open="xindi-zhang">张昕荻</button>、
+                      <button class="program-title-button" type="button" data-speaker-open="yanhong-fan">樊燕红</button>
+                    </td>
+                  </tr>
+                  <tr class="tea-break">
+                    <td class="col-time">15:00-15:30</td>
+                    <td>茶歇</td>
+                  </tr>
+                  <tr>
+                    <td class="col-time">15:30-16:30</td>
+                    <td>密码报告（续）</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+
+          <div class="speakers-grid talks-grid">
+            <article class="speaker-card talk-card" data-sid="yuhong-dai">
+              <img class="speaker-photo" src="assets/speakers/yuhong-dai.png" alt="戴彧虹" />
+              <div class="speaker-body">
+                <h3>戴彧虹</h3>
+                <div class="speaker-aff">中国科学院数学与系统科学研究院</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="yuhong-dai">On exact solutions for large-scale facility location</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
               </div>
-              <div class="program-table" role="table" aria-label="7月31日报到与欢迎仪式">
-                <div class="program-row head" role="row">
-                  <span role="columnheader">时间</span>
-                  <span role="columnheader">事项</span>
-                  <span role="columnheader">地点</span>
-                </div>
-                <div class="program-row" role="row">
-                  <time role="cell"><span class="tba">待公布</span></time>
-                  <span role="cell">会议报到</span>
-                  <span role="cell">蓝谷国际酒店大堂</span>
-                </div>
-                <div class="program-row" role="row">
-                  <time role="cell"><span class="tba">待公布</span></time>
-                  <span role="cell">欢迎仪式</span>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="naijun-zhan">
+              <img class="speaker-photo" src="assets/speakers/naijun-zhan.jpeg" alt="詹乃军" />
+              <div class="speaker-body">
+                <h3>詹乃军</h3>
+                <div class="speaker-aff">北京大学计算机学院</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="naijun-zhan">Verification of Stochastic Dynamical and Hybrid Systems</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
               </div>
-            </div>
-    
-            <div class="day-block accent">
-              <div class="day-title">
-                <span>8月1日</span>
-                <h3>会议日程</h3>
+            </article>
+            <article class="speaker-card talk-card" data-sid="xiaoming-sun">
+              <img class="speaker-photo" src="assets/speakers/xiaoming-sun.png" alt="孙晓明" />
+              <div class="speaker-body">
+                <h3>孙晓明</h3>
+                <div class="speaker-aff">中国科学院计算技术研究所</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="xiaoming-sun">量子线路优化</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
               </div>
-              <div class="program-table" role="table" aria-label="8月1日会议日程">
-                <div class="program-row head" role="row">
-                  <span role="columnheader">时间</span>
-                  <span role="columnheader">报告人</span>
-                  <span role="columnheader">报告内容</span>
-                </div>
-                <div class="program-row" role="row">
-                  <time role="cell"><span class="tba">待公布</span></time>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                </div>
-                <div class="program-row" role="row">
-                  <time role="cell"><span class="tba">待公布</span></time>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                </div>
-                <div class="program-row" role="row">
-                  <time role="cell"><span class="tba">待公布</span></time>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="qilong-feng">
+              <img class="speaker-photo" src="assets/speakers/qilong-feng.jpeg" alt="冯启龙" />
+              <div class="speaker-body">
+                <h3>冯启龙</h3>
+                <div class="speaker-aff">中南大学计算机学院</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="qilong-feng">面向大规模数据的机器学习算法优化</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
               </div>
-            </div>
-    
-            <div class="day-block">
-              <div class="day-title">
-                <span>8月2日</span>
-                <h3>会议日程</h3>
+            </article>
+            <article class="speaker-card talk-card" data-sid="yixin-cao">
+              <img class="speaker-photo" src="assets/speakers/yixin-cao.jpeg" alt="操宜新" />
+              <div class="speaker-body">
+                <h3>操宜新</h3>
+                <div class="speaker-aff">香港理工大学计算学系</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="yixin-cao">Half-integral Solutions of Linear Systems</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
               </div>
-              <div class="program-table" role="table" aria-label="8月2日会议日程">
-                <div class="program-row head" role="row">
-                  <span role="columnheader">时间</span>
-                  <span role="columnheader">报告人</span>
-                  <span role="columnheader">报告内容</span>
-                </div>
-                <div class="program-row" role="row">
-                  <time role="cell"><span class="tba">待公布</span></time>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                </div>
-                <div class="program-row" role="row">
-                  <time role="cell"><span class="tba">待公布</span></time>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                </div>
-                <div class="program-row" role="row">
-                  <time role="cell"><span class="tba">待公布</span></time>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                  <span role="cell"><span class="tba">待公布</span></span>
-                </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="zhendong-lei">
+              <img class="speaker-photo" src="assets/speakers/zhendong-lei.jpg" alt="雷震东" />
+              <div class="speaker-body">
+                <h3>雷震东</h3>
+                <div class="speaker-aff">华为泰勒实验室</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="zhendong-lei">待定</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
               </div>
-            </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="mingxuan-yuan">
+              <img class="speaker-photo" src="assets/speakers/mingxuan-yuan.jpg" alt="袁明轩" />
+              <div class="speaker-body">
+                <h3>袁明轩</h3>
+                <div class="speaker-aff">华为诺亚方舟实验室 / 香港诺亚方舟实验室</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="mingxuan-yuan">基于大模型的自动算法设计</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="min-li">
+              <img class="speaker-photo" src="assets/speakers/min-li.png" alt="李旻" />
+              <div class="speaker-body">
+                <h3>李旻</h3>
+                <div class="speaker-aff">东南大学集成电路学院</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="min-li">面向硬件形式化难例求解的智能体路线</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="hu-qin">
+              <img class="speaker-photo" src="assets/speakers/hu-qin.jpeg" alt="秦虎" />
+              <div class="speaker-body">
+                <h3>秦虎</h3>
+                <div class="speaker-aff">华中科技大学管理学院</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="hu-qin">车辆路径优化算法：现状、挑战和实践</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="yixiao-huang">
+              <img class="speaker-photo" src="assets/speakers/yixiao-huang.jpeg" alt="黄一潇" />
+              <div class="speaker-body">
+                <h3>黄一潇</h3>
+                <div class="speaker-aff">顺丰科技</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="yixiao-huang">顺丰智能物流网络规划技术分享</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="emanuele-bellini">
+              <img class="speaker-photo" src="assets/speakers/emanuele-bellini.jpeg" alt="Emanuele Bellini" />
+              <div class="speaker-body">
+                <h3>Emanuele Bellini</h3>
+                <div class="speaker-aff">Technology Innovation Institute (TII), UAE</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="emanuele-bellini">Generating and Solving Hard Symmetric Cryptanalysis Problems with CLAASP</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="chunning-zhou">
+              <img class="speaker-photo" src="assets/speakers/chunning-zhou.jpg" alt="周春宁" />
+              <div class="speaker-body">
+                <h3>周春宁</h3>
+                <div class="speaker-aff">南洋理工大学</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="chunning-zhou">Open Cryptanalysis Platform（OCP）：面向对称密码的自动化密码分析平台</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="xindi-zhang">
+              <img class="speaker-photo" src="assets/speakers/xindi-zhang.png" alt="张昕荻" />
+              <div class="speaker-body">
+                <h3>张昕荻</h3>
+                <div class="speaker-aff">中国科学院软件研究所</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="xindi-zhang">SAT求解及其在密码分析中的应用</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="shengxin-liu">
+              <img class="speaker-photo" src="assets/speakers/shengxin-liu.jpg" alt="刘圣鑫" />
+              <div class="speaker-body">
+                <h3>刘圣鑫</h3>
+                <div class="speaker-aff">哈尔滨工业大学（深圳）计算机科学与技术学院</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="shengxin-liu">Branch-and-Bound Algorithms for Maximum Cohesive Subgraph Search</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="zhaoguo-wang">
+              <img class="speaker-photo" src="assets/speakers/zhaoguo-wang.jpeg" alt="王肇国" />
+              <div class="speaker-body">
+                <h3>王肇国</h3>
+                <div class="speaker-aff">上海交通大学</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="zhaoguo-wang">FM-Agent：面向大型系统软件的霍尔范式自动化推理智能体及领域实战</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
+            <article class="speaker-card talk-card" data-sid="yanhong-fan">
+              <img class="speaker-photo" src="assets/speakers/yanhong-fan.jpg" alt="樊燕红" />
+              <div class="speaker-body">
+                <h3>樊燕红</h3>
+                <div class="speaker-aff">山东大学</div>
+                <button class="talk-trigger speaker-title" type="button" data-speaker-open="yanhong-fan">待定</button>
+                <div class="speaker-meta">点击查看摘要和简介</div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -239,9 +485,6 @@
             <p class="lead">
               为保证 HCP 会议的长期稳定举办，把会议办成汇聚学术和应用前沿的高质量论坛，HCP 2026 将收取基本的会议注册费用。
             </p>
-            <p>
-              缴费二维码、发票信息和缴费方式待公布。
-            </p>
             <a class="button primary dark" href="https://v.wjx.cn/vm/t15EN56.aspx" target="_blank" rel="noreferrer">立即注册</a>
             <div class="reg-qr-row">
               <div class="hotel-booking">
@@ -250,7 +493,7 @@
               </div>
               <div class="hotel-booking">
                 <div class="hotel-booking-head">参会微信群</div>
-                <img src="assets/wechat-group-qr.png" alt="HCP 2026 参会微信群二维码" />
+                <img class="wechat-group-qr" src="assets/wechat-group-qr.png?v=20260718" alt="HCP 2026 参会微信群二维码" />
               </div>
             </div>
           </div>
@@ -269,9 +512,12 @@
                 <span role="cell">800元</span>
               </div>
             </div>
-            <div class="hotel-booking">
-              <div class="hotel-booking-head">缴费二维码</div>
-              <div class="qr-placeholder">待公布</div>
+            <div>
+              <div class="hotel-booking">
+                <div class="hotel-booking-head">缴费二维码</div>
+                <img src="assets/交费.png" alt="缴费二维码" />
+              </div>
+              <p class="fee-note">注：注册费用包括会议资料、特邀专家报告费等。注册费用由山东大学财务处收取，并开具增值税发票，发票内容是会议费。</p>
             </div>
           </div>
         </div>
@@ -312,10 +558,34 @@
                   <span role="cell">大床/标间（双早）</span>
                   <span role="cell">530元</span>
                 </div>
+                <div class="fee-row two" role="row">
+                  <span role="cell">豪华亲子房（双早）</span>
+                  <span role="cell">680元</span>
+                </div>
               </div>
               <div class="hotel-booking">
                 <div class="hotel-booking-head">微信扫码预订协议价</div>
                 <img src="assets/HCPHotel.jpg" alt="青岛蓝谷国际酒店预订二维码" />
+              </div>
+            </div>
+          </div>
+          <div class="transport-block" id="transport">
+            <h3>交通</h3>
+            <div class="transport-grid">
+              <div class="transport-item">
+                <h4>接站大巴</h4>
+                <p>7月31日将在青岛北站安排大巴车接送参会人员前往青岛蓝谷国际酒店。</p>
+                <div class="transport-times" aria-label="接站大巴发车时间">
+                  <span>14:00</span>
+                  <span>16:00</span>
+                  <span>18:30</span>
+                  <span>20:00</span>
+                  <span>22:00</span>
+                </div>
+              </div>
+              <div class="transport-item">
+                <h4>地铁</h4>
+                <p>乘坐青岛地铁 11 号线至“蓝色硅谷”站，出站后步行约 10 分钟可达青岛蓝谷国际酒店。</p>
               </div>
             </div>
           </div>
@@ -400,6 +670,10 @@
                 <li>崔佳敏 （山东大学）</li>
                 <li>陈师尧 （山东大学）</li>
                 <li>潘增彩 （山东大学）</li>
+                <li>刘群 （山东大学）</li>
+                <li>吴立轩 （山东大学）</li>
+                <li>樊燕红 （山东大学）</li>
+                <li>王超然 （山东大学）</li>
               </ul>
             </div>
           </div>
@@ -420,14 +694,21 @@
         </div>
       </section>
     </main>
-    
+
+    <div id="speaker-modal" class="speaker-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="speaker-modal-name">
+      <div class="speaker-modal-box">
+        <button id="speaker-modal-close" class="speaker-modal-close" type="button" aria-label="关闭">×</button>
+        <div id="speaker-modal-body"></div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container footer-inner">
         <span>HCP 2026 · 山东大学</span>
         <span>© 2026 Workshop on Hard Computational Problems</span>
       </div>
     </footer>
-    
-    <script src="script.js"></script>
+
+    <script src="script.js?v=20260721-sun-talk"></script>
   </body>
 </html>

@@ -39,6 +39,10 @@ body.nav-open {
   overflow: hidden;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -445,6 +449,7 @@ h3 {
 
 .day-block,
 .venue-card,
+.speaker-card,
 .org-block,
 .placeholder-card,
 .info-panel,
@@ -508,79 +513,386 @@ h3 {
 
 .schedule-layout {
   display: grid;
-  gap: 16px;
+  gap: 22px;
 }
 
 .day-block {
+  padding: 20px;
   overflow: hidden;
 }
 
-.day-title {
-  padding: 18px 22px;
-  color: #fff;
-  background: var(--sdu-red-dark);
+.scope-program .day-block {
+  box-shadow: 0 16px 36px rgba(33, 24, 20, 0.09);
 }
 
-.day-title span {
-  display: block;
-  margin-bottom: 6px;
-  color: #f4dfb0;
+.day-heading {
+  margin: 0 0 12px;
+  color: var(--sdu-red-dark);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.program-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
   font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.program-table th,
+.program-table td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.program-table th {
+  color: #fff;
+  background: var(--sdu-red-dark);
+  font-weight: 700;
+  text-align: center;
+}
+
+.program-table th:nth-child(1),
+.program-table td:nth-child(1) {
+  width: 128px;
+}
+
+.program-table th:nth-child(2),
+.program-table td:nth-child(2) {
+  width: 230px;
+}
+
+.program-table th:nth-child(4),
+.program-table td:nth-child(4) {
+  width: 138px;
+}
+
+.program-table.compact th:nth-child(1),
+.program-table.compact td:nth-child(1) {
+  width: 150px;
+}
+
+.program-table.compact th:nth-child(2),
+.program-table.compact td:nth-child(2) {
+  width: auto;
+}
+
+.program-table strong {
+  font-weight: 700;
+}
+
+.program-table .aff {
+  margin-top: 4px;
+  color: var(--muted-text);
+  font-family:
+    "Noto Sans SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.program-table .col-time {
+  color: var(--sdu-red);
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.program-table .col-content {
+  text-align: left;
+}
+
+.program-table .chair-cell {
+  color: var(--muted-text);
+  text-align: center;
+}
+
+.program-table .tea-break td,
+.program-table .row-break td {
+  color: var(--sdu-red-dark);
+  background: #fff2cc;
+  text-align: center;
+}
+
+.program-table .row-break td {
+  background: #f7efe3;
+}
+
+.program-table tr[data-sid] {
+  cursor: pointer;
+}
+
+.program-table tr[data-sid]:hover td {
+  background: #fff8ea;
+}
+
+.program-title-button,
+.talk-trigger {
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.program-title-button {
+  display: inline;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.program-title-button:hover,
+.program-title-button:focus-visible,
+.talk-trigger:hover,
+.talk-trigger:focus-visible {
+  color: var(--sdu-red);
+  text-decoration: underline;
+  outline: none;
+}
+
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.talks-grid {
+  margin-top: 6px;
+}
+
+.speaker-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.talk-card {
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.talk-card:hover,
+.talk-card:focus-within {
+  border-color: rgba(167, 25, 48, 0.34);
+  box-shadow: 0 22px 52px rgba(33, 24, 20, 0.16);
+  transform: translateY(-2px);
+}
+
+.speaker-photo,
+.speaker-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+.speaker-photo {
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.speaker-photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-text);
+  font-family:
+    "Noto Sans SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+  font-weight: 700;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.speaker-body {
+  flex: 1;
+  padding: 18px 20px 20px;
+}
+
+.speaker-title {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  color: var(--muted-text);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.talk-card .speaker-title {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.speaker-aff {
+  margin-top: 4px;
+  color: var(--sdu-red);
+  font-family:
+    "Noto Sans SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
   font-size: 13px;
   font-weight: 700;
 }
 
-.day-title h3 {
-  color: #fff;
+.speaker-meta {
+  margin-top: 10px;
+  color: var(--muted-text);
+  font-family:
+    "Noto Sans SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-.program-table {
-  padding: 0;
-}
-
-.program-row {
-  display: grid;
-  grid-template-columns: 140px minmax(160px, 0.45fr) 1fr;
-  min-height: 52px;
-  border-top: 1px solid var(--line);
-}
-
-.program-row:first-child {
-  border-top: 0;
-}
-
-.program-row.head {
-  color: #fff;
-  background: var(--sdu-red-dark);
-  border-top: 0;
-  font-weight: 700;
-}
-
-.program-row span,
-.program-row time {
+.speaker-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
   display: flex;
   align-items: center;
-  padding: 14px 18px;
-  border-left: 1px solid var(--line);
+  justify-content: center;
+  padding: 18px;
+  background: rgba(25, 13, 15, 0.58);
+  backdrop-filter: blur(4px);
+}
+
+.speaker-modal[hidden] {
+  display: none;
+}
+
+.speaker-modal-box {
+  position: relative;
+  width: min(100%, 900px);
+  max-height: min(88vh, 820px);
+  overflow-y: auto;
+  background: var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(33, 24, 20, 0.34);
+  animation: modal-in 180ms ease both;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.speaker-modal-close {
+  position: sticky;
+  top: 12px;
+  left: calc(100% - 48px);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 12px 12px -48px auto;
+  color: var(--muted-text);
+  font-size: 24px;
+  line-height: 1;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.speaker-modal-close:hover,
+.speaker-modal-close:focus-visible {
+  color: #fff;
+  background: var(--sdu-red);
+  border-color: var(--sdu-red);
+  outline: none;
+}
+
+.speaker-modal-inner {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 28px;
+  padding: 34px;
+}
+
+.speaker-modal-photo {
+  width: 180px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 48%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.speaker-modal-name {
   color: var(--ink);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.25;
 }
 
-.program-row span:first-child,
-.program-row time:first-child {
-  border-left: 0;
-}
-
-.program-row time {
+.speaker-modal-aff {
+  margin-top: 6px;
   color: var(--sdu-red);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    "Noto Sans SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
   font-size: 14px;
   font-weight: 700;
 }
 
-.program-row.head span,
-.program-row.head time {
-  color: #fff;
-  border-left-color: rgba(255, 255, 255, 0.16);
+.speaker-modal-label {
+  margin-top: 20px;
+  color: var(--sdu-red-dark);
+  font-family:
+    "Noto Sans SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.speaker-modal-title {
+  margin-top: 6px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.speaker-modal-text {
+  margin-top: 6px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.speaker-modal-text p + p {
+  margin-top: 12px;
 }
 
 .registration-layout {
@@ -765,6 +1077,65 @@ h3 {
   margin: 18px auto;
 }
 
+.transport-block {
+  margin-top: 18px;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.transport-block h3 {
+  margin: 0 0 18px;
+  padding-left: 14px;
+  border-left: 5px solid var(--sdu-red);
+}
+
+.transport-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.transport-item {
+  padding: 20px;
+  background: #faf7f2;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.transport-item h4 {
+  margin: 0 0 12px;
+  color: var(--sdu-red-dark);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.transport-item p {
+  color: var(--muted-text);
+  line-height: 1.75;
+}
+
+.transport-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.transport-times span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  padding: 9px 16px;
+  color: #fff;
+  font-weight: 700;
+  background: var(--sdu-red);
+  border-radius: 999px;
+}
+
 .reg-qr-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -776,6 +1147,12 @@ h3 {
   width: 150px;
   height: 150px;
   margin: 14px auto;
+}
+
+.reg-qr-row .hotel-booking img.wechat-group-qr {
+  width: min(100% - 28px, 230px);
+  height: auto;
+  object-fit: contain;
 }
 
 @media (max-width: 480px) {
@@ -804,22 +1181,11 @@ h3 {
   gap: 18px;
 }
 
-.tba {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 10px;
+.fee-note {
+  margin-top: 14px;
   color: var(--muted-text);
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.program-row time .tba {
-  color: var(--muted-text);
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .organization-layout {
@@ -1010,7 +1376,8 @@ address a {
   }
 
   .hero-facts,
-  .hotel-content {
+  .hotel-content,
+  .transport-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1049,26 +1416,154 @@ address a {
     height: 360px;
   }
 
-  .program-row {
-    grid-template-columns: 1fr;
-    min-height: 0;
+  .day-block {
+    padding: 14px;
+    overflow: visible;
   }
 
-  .program-row span,
-  .program-row time {
-    border-left: 0;
+  .day-heading {
+    font-size: 18px;
+  }
+
+  .program-table {
+    display: block;
+    border: 0;
+    background: transparent;
+  }
+
+  .program-table thead {
+    display: none;
+  }
+
+  .program-table tbody {
+    display: grid;
+    gap: 10px;
+  }
+
+  .program-table tr {
+    display: block;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+
+  .program-table th,
+  .program-table td {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+
+  .program-table td {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 10px;
+    width: 100%;
+    border: 0;
     border-top: 1px solid var(--line);
-    padding: 10px 18px;
+    text-align: left;
   }
 
-  .program-row span:first-child,
-  .program-row time:first-child {
+  .program-table td:first-child {
     border-top: 0;
   }
 
-  .program-row.head span,
-  .program-row.head time {
-    border-top-color: rgba(255, 255, 255, 0.16);
+  .program-table td::before {
+    color: var(--muted-text);
+    font-family:
+      "Noto Sans SC",
+      "PingFang SC",
+      "Microsoft YaHei",
+      sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .program-table td:nth-child(1)::before {
+    content: "时间";
+  }
+
+  .program-table:not(.compact) td:nth-child(2)::before {
+    content: "报告人";
+  }
+
+  .program-table:not(.compact) td:nth-child(3)::before {
+    content: "题目";
+  }
+
+  .program-table:not(.compact) td:nth-child(4)::before {
+    content: "主持人";
+  }
+
+  .program-table.compact td:nth-child(2)::before,
+  .program-table td[colspan]::before {
+    content: "安排";
+  }
+
+  html[lang="en"] .program-table td:nth-child(1)::before {
+    content: "Time";
+  }
+
+  html[lang="en"] .program-table:not(.compact) td:nth-child(2)::before {
+    content: "Speaker";
+  }
+
+  html[lang="en"] .program-table:not(.compact) td:nth-child(3)::before {
+    content: "Title";
+  }
+
+  html[lang="en"] .program-table:not(.compact) td:nth-child(4)::before {
+    content: "Chair";
+  }
+
+  html[lang="en"] .program-table.compact td:nth-child(2)::before,
+  html[lang="en"] .program-table td[colspan]::before {
+    content: "Item";
+  }
+
+  .program-table .col-time,
+  .program-table .chair-cell {
+    text-align: left;
+  }
+
+  .program-table .chair-cell:empty {
+    display: none;
+  }
+
+  .program-title-button {
+    display: block;
+    width: 100%;
+  }
+
+  .speaker-modal {
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .speaker-modal-box {
+    max-height: calc(100vh - 20px);
+  }
+
+  .speaker-modal-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px 18px;
+  }
+
+  .speaker-modal-photo {
+    width: min(68vw, 220px);
+    max-height: 300px;
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .speaker-modal-name {
+    font-size: 22px;
+  }
+
+  .speaker-modal-title {
+    font-size: 16px;
   }
 
   .fee-row {
