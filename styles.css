@@ -651,19 +651,11 @@ h3 {
   line-height: 1.45;
 }
 
-.program-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 8px;
-  padding: 3px 9px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1;
-  background: var(--sdu-red);
-  border-radius: 999px;
-  vertical-align: middle;
+.talk-kind {
+  margin-right: 4px;
+  color: var(--sdu-red);
+  font-weight: 800;
+  letter-spacing: 0.01em;
   white-space: nowrap;
 }
 
