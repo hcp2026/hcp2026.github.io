@@ -356,6 +356,33 @@ AGENDA_CSS = """
   color: #333844;
   background: #faf1e7;
 }
+.agenda-table .panel td {
+  background: #f6f8fb;
+}
+.agenda-table .panel-label {
+  color: #761120;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+.agenda-table .panel-topic {
+  margin-top: 3px;
+  color: #17191f;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 900;
+}
+.agenda-table .panel-meta {
+  margin-top: 3px;
+  color: #69707d;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 800;
+}
+.agenda-table .panel-meta span {
+  color: #333844;
+}
 """
 
 
@@ -734,7 +761,7 @@ AGENDA_BLOCKS = [
             ("14:30-15:00", "王肇国", "FM-Agent：面向大型系统软件的霍尔范式自动化推理智能体及领域实战", ""),
             ("15:00-15:30", "李旻", "面向硬件形式化难例求解的智能体路线", ""),
             ("15:30-15:45", "茶歇", "", "break"),
-            ("15:45-16:45", "圆桌讨论", "AI时代的算法研究 / 主持人：陆品燕（上海财经大学） / 嘉宾待定", "activity"),
+            ("15:45-16:45", "Panel Discussion", "AI时代的算法研究", "panel"),
             ("16:45-17:30", "户外交流", "", "activity"),
             ("17:30-", "晚餐", "", "activity"),
         ],
@@ -788,7 +815,15 @@ def agenda_html(speakers: dict[str, dict]) -> str:
         rows = []
         for time, name, title, row_cls in block["rows"]:
             cls = f' class="{row_cls}"' if row_cls else ""
-            if row_cls in {"break", "activity"}:
+            if row_cls == "panel":
+                label = (
+                    '<div class="panel-label">Panel Discussion</div>'
+                    '<div class="panel-topic">AI时代的算法研究</div>'
+                    '<div class="panel-meta"><span>主持人：</span>陆品燕（上海财经大学）</div>'
+                    '<div class="panel-meta"><span>嘉宾：</span>待定</div>'
+                )
+                rows.append(f'<tr class="panel"><td class="time">{esc(time)}</td><td>{label}</td></tr>')
+            elif row_cls in {"break", "activity"}:
                 label = f"<strong>{esc(name)}</strong>"
                 if title:
                     label += f'<div class="title">{esc(title)}</div>'

@@ -619,6 +619,47 @@ h3 {
   text-align: center;
 }
 
+.program-table .panel-session {
+  padding: 16px 20px;
+  background: #fffaf7;
+  text-align: left;
+}
+
+.program-table .panel-session-title {
+  color: var(--sdu-red-dark);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.program-table .panel-topic {
+  margin-top: 5px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.program-table .panel-meta {
+  margin-top: 4px;
+  color: var(--muted-text);
+  font-family:
+    "Noto Sans SC",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.program-table .panel-meta-label {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.program-table .panel-host-button {
+  color: var(--sdu-red);
+  font-weight: 700;
+}
+
 .program-table .tea-break td,
 .program-table .row-break td {
   color: var(--sdu-red-dark);
