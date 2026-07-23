@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HCP 2026 · 陆品燕</title>
+  <style>
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  color: #fff;
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  background: #14070d;
+}
+.poster {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(42, 29, 69, .90) 0%, rgba(92, 35, 55, .88) 42%, rgba(80, 4, 18, .98) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center / cover no-repeat;
+}
+.poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 22% 13%, rgba(255, 226, 163, .22), transparent 28%),
+    linear-gradient(135deg, rgba(255,255,255,.09), transparent 34%),
+    linear-gradient(180deg, rgba(20, 7, 13, .08), rgba(60, 4, 17, .54));
+  pointer-events: none;
+}
+.top-rule {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 16px;
+  background: linear-gradient(90deg, #a71930, #d8b15f, #fff1bf);
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 72px 72px 58px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.brand img {
+  width: 250px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+.brand .tag {
+  margin-left: auto;
+  color: #f7dfaa;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 7px;
+}
+.event {
+  margin-top: 58px;
+}
+.event .kicker {
+  color: #f7dfaa;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 14px;
+}
+.event h1 {
+  margin: 20px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 122px;
+  line-height: .92;
+  letter-spacing: 4px;
+}
+.event .subtitle {
+  margin-top: 18px;
+  font-size: 31px;
+  line-height: 1.36;
+  font-weight: 900;
+}
+.pill-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.pill {
+  padding: 12px 18px;
+  color: #5b0e19;
+  background: #f4dfb0;
+  border-radius: 999px;
+  font-size: 22px;
+  font-weight: 900;
+}
+.section-label {
+  color: #f7dfaa;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 6px;
+}
+.footer {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  bottom: 46px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: #f7dfaa;
+  border-top: 1px solid rgba(255,255,255,.24);
+  padding-top: 24px;
+  font-size: 21px;
+  font-weight: 900;
+}
+.footer .url {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 2px;
+}
+
+.person-head {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: 38px;
+  align-items: center;
+  margin-top: 78px;
+}
+.portrait {
+  width: 330px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 42%;
+  border: 1px solid rgba(255,255,255,.26);
+  border-radius: 20px;
+  box-shadow: 0 18px 52px rgba(0,0,0,.36);
+}
+.person-label {
+  display: inline-flex;
+  padding: 9px 16px;
+  color: #fff;
+  background: #a71930;
+  border-radius: 7px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+.person-name {
+  margin-top: 20px;
+  font-size: 66px;
+  line-height: 1.1;
+  font-weight: 900;
+}
+.person-aff {
+  margin-top: 14px;
+  color: rgba(255,255,255,.78);
+  font-size: 25px;
+  line-height: 1.42;
+  font-weight: 800;
+}
+.topic-box {
+  margin-top: 30px;
+  padding: 24px 28px;
+  background: rgba(255,255,255,.11);
+  border-left: 7px solid #f7dfaa;
+  border-radius: 0 14px 14px 0;
+}
+.topic-box .small {
+  color: #f7dfaa;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+.topic-box .topic {
+  margin-top: 10px;
+  font-size: 31px;
+  line-height: 1.35;
+  font-weight: 900;
+}
+.bio-section {
+  margin-top: 64px;
+}
+.bio-section h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 34px;
+  font-weight: 900;
+}
+.bio-section h3::after {
+  content: "";
+  display: inline-block;
+  width: 560px;
+  height: 1px;
+  margin-left: 18px;
+  vertical-align: middle;
+  background: rgba(255,255,255,.22);
+}
+.bio-card {
+  margin-top: 24px;
+  padding: 34px 38px;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 18px;
+}
+.bio-card p {
+  margin: 0;
+  color: rgba(255,255,255,.92);
+  font-size: 26px;
+  line-height: 1.82;
+  text-align: justify;
+}
+</style>
+</head>
+<body>
+  <article class="poster">
+    <div class="top-rule"></div>
+    <div class="inner">
+      <header class="brand">
+        <img src="../../assets/sdu-logo.svg" alt="山东大学" />
+        <div class="tag">专题海报</div>
+      </header>
+      <section class="event">
+        <div class="kicker">第 九 届</div>
+        <h1>HCP 2026</h1>
+        <div class="subtitle">难解问题的理论、算法与应用研讨会</div>
+      </section>
+      
+      <section class="person-head">
+        <img class="portrait" src="../../assets/speakers/pinyan-lu.jpg" alt="陆品燕" />
+        <div>
+          <div class="person-label">PANEL DISCUSSION 主持人</div>
+          <div class="person-name">陆品燕</div>
+          <div class="person-aff">上海财经大学</div>
+          <div class="topic-box">
+            <div class="small">专题讨论</div>
+            <div class="topic">AI时代的算法研究</div>
+          </div>
+        </div>
+      </section>
+      <section class="bio-section">
+        <h3>个人简介</h3>
+        <div class="bio-card"><p>陆品燕，上海财经大学“长江学者”特聘教授，计算机与人工智能学院创院院长，华为泰勒实验室首席科学家。他的主要研究方向是理论计算机，并注重与其它学科的交叉，近年来也关注求解器算法与大模型机理的研究。曾荣获ACM杰出科学家奖、第八届世界华人数学家大会ICCM数学奖（原晨兴数学奖）银奖、中国计算机学会青年科学家（2014）等荣誉。</p></div>
+      </section>
+    
+      <footer class="footer">
+        <span>2026.07.31 – 08.02 · 山东大学青岛校区</span>
+        <span class="url">hcp2026.sincst.cn</span>
+      </footer>
+    </div>
+  </article>
+</body>
+</html>

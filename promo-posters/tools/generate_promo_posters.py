@@ -327,10 +327,16 @@ AGENDA_CSS = """
   font-size: 18px;
   line-height: 1.25;
 }
+.agenda-table .speaker-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 .agenda-table .aff {
-  margin-top: 2px;
   color: #69707d;
   font-size: 13px;
+  line-height: 1.2;
   font-weight: 800;
 }
 .agenda-table .title {
@@ -700,8 +706,9 @@ AGENDA_BLOCKS = [
         "date": "7月31日 星期五",
         "place": "青岛蓝谷国际酒店大堂",
         "rows": [
-            ("报到", "报到注册 / 欢迎交流", "", "activity"),
+            ("14:00-21:00", "注册", "", "activity"),
             ("交通", "打车导航到「蓝谷国际酒店」", "", "activity"),
+            ("17:30-20:30", "欢迎自助餐", "", "activity"),
         ],
     },
     {
@@ -711,7 +718,7 @@ AGENDA_BLOCKS = [
         "rows": [
             ("08:50-09:00", "开幕式、致辞", "", "activity"),
             ("09:00-09:45", "戴彧虹", "特邀报告：大规模设施选址问题的精确求解", ""),
-            ("09:45-10:30", "詹乃军", "特邀报告：随机动态系统与混成系统的验证", ""),
+            ("09:45-10:30", "詹乃军", "特邀报告：On termination of polynomial programs with equality conditions", ""),
             ("10:30-10:45", "茶歇", "", "break"),
             ("10:45-11:30", "孙晓明", "特邀报告：量子线路优化", ""),
             ("11:30-12:15", "冯启龙", "特邀报告：面向大规模数据的机器学习算法优化", ""),
@@ -727,7 +734,7 @@ AGENDA_BLOCKS = [
             ("14:30-15:00", "王肇国", "FM-Agent：面向大型系统软件的霍尔范式自动化推理智能体及领域实战", ""),
             ("15:00-15:30", "李旻", "面向硬件形式化难例求解的智能体路线", ""),
             ("15:30-15:45", "茶歇", "", "break"),
-            ("15:45-16:45", "圆桌讨论", "AI时代的算法研究", "activity"),
+            ("15:45-16:45", "圆桌讨论", "AI时代的算法研究 / 主持人：陆品燕（上海财经大学） / 嘉宾待定", "activity"),
             ("16:45-17:30", "户外交流", "", "activity"),
             ("17:30-", "晚餐", "", "activity"),
         ],
@@ -738,7 +745,7 @@ AGENDA_BLOCKS = [
         "place": "组合优化专题",
         "rows": [
             ("09:00-09:30", "操宜新", "线性系统的半整数解", ""),
-            ("09:30-10:00", "雷震东", "待定", ""),
+            ("09:30-10:00", "雷震东", "从工业应用看模型表达能力与算法设计", ""),
             ("10:00-10:30", "刘圣鑫", "最大凝聚子图搜索的分支定界算法", ""),
             ("10:30-11:00", "茶歇", "", "break"),
             ("11:00-11:30", "秦虎", "车辆路径优化算法：现状、挑战和实践", ""),
@@ -755,6 +762,7 @@ AGENDA_BLOCKS = [
             ("15:00-15:30", "茶歇", "", "break"),
             ("15:30-16:00", "张昕荻", "SAT求解及其在密码分析中的应用", ""),
             ("16:00-16:30", "樊燕红", "对称密码的自动化分析与设计技术", ""),
+            ("16:30-16:40", "闭幕式", "", "activity"),
         ],
     },
 ]
@@ -768,8 +776,12 @@ AGENDA_RENDER_ORDER = [
 ]
 
 
-def agenda_html() -> str:
+def agenda_html(speakers: dict[str, dict]) -> str:
     cards = []
+    affiliations = {
+        pick(speaker_data["name"]): pick(speaker_data["aff"])
+        for speaker_data in speakers.values()
+    }
     blocks_by_date = {block["date"]: block for block in AGENDA_BLOCKS}
     for date in AGENDA_RENDER_ORDER:
         block = blocks_by_date[date]
@@ -782,10 +794,13 @@ def agenda_html() -> str:
                     label += f'<div class="title">{esc(title)}</div>'
                 rows.append(f"<tr{cls}><td class=\"time\">{esc(time)}</td><td>{label}</td></tr>")
             else:
+                aff = affiliations.get(name, "")
+                aff_html = f'<span class="aff">{esc(aff)}</span>' if aff else ""
                 rows.append(
                     "<tr>"
                     f"<td class=\"time\">{esc(time)}</td>"
-                    f"<td><strong>{esc(name)}</strong><div class=\"title\">{esc(title)}</div></td>"
+                    f"<td><div class=\"speaker-line\"><strong>{esc(name)}</strong>{aff_html}</div>"
+                    f"<div class=\"title\">{esc(title)}</div></td>"
                     "</tr>"
                 )
         cards.append(
@@ -802,7 +817,7 @@ KEYNOTE_IDS = ["yuhong-dai", "naijun-zhan", "xiaoming-sun", "qilong-feng"]
 
 POSTER_TITLE_OVERRIDES = {
     "yuhong-dai": "大规模设施选址问题的精确求解",
-    "naijun-zhan": "随机动态系统与混成系统的验证",
+    "naijun-zhan": "On termination of polynomial programs with equality conditions",
     "yixin-cao": "线性系统的半整数解",
     "shengxin-liu": "最大凝聚子图搜索的分支定界算法",
     "emanuele-bellini": "使用 CLAASP 生成并求解困难的对称密码分析问题",
@@ -810,7 +825,7 @@ POSTER_TITLE_OVERRIDES = {
 }
 
 POSTER_ABSTRACT_OVERRIDES = {
-    "naijun-zhan": "本报告介绍我们近期关于随机动态系统与混成系统验证的工作，包括基于矩的方法、基于随机障碍证书的方法、可达-避障验证，以及容忍安全性与容忍可达-避障验证。报告还将讨论随机求解，这是概率程序和随机混成系统验证中的一个基础问题。"
+    "naijun-zhan": "We investigate termination of multi-path polynomial programs over an effective field, where assignments are polynomials and guards are polynomial equalities. We show that the set of non-terminating inputs is algorithmically computable, yielding decidability for a given input and for semi-algebraic input sets over R."
 }
 
 POSTER_AFF_OVERRIDES = {
@@ -889,7 +904,7 @@ def clean_outputs() -> None:
 def write_html_files(speakers: dict[str, dict]) -> list[Path]:
     files = [
         ("01-main-poster.html", main_html()),
-        ("02-agenda-poster.html", agenda_html()),
+        ("02-agenda-poster.html", agenda_html(speakers)),
         ("03-keynote-poster.html", keynotes_html(speakers)),
         ("04-topic-speakers-poster.html", topics_html(speakers)),
     ]
@@ -945,7 +960,7 @@ def render_html(path: Path, png_out: Path) -> None:
         html_file_url(path),
     ]
     try:
-        subprocess.run(cmd, check=True, timeout=24, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(cmd, check=True, timeout=60, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except subprocess.TimeoutExpired:
         if not png_out.exists() or png_out.stat().st_size == 0:
             raise

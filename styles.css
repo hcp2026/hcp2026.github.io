@@ -610,6 +610,10 @@ h3 {
   text-align: left;
 }
 
+.program-table .program-center {
+  text-align: center;
+}
+
 .program-table .chair-cell {
   color: var(--muted-text);
   text-align: center;

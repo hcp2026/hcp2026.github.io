@@ -47,16 +47,41 @@ const SPEAKERS = {
     },
     "photo": "assets/speakers/naijun-zhan.jpeg",
     "title": {
-      "zh": "Verification of Stochastic Dynamical and Hybrid Systems",
-      "en": "Verification of Stochastic Dynamical and Hybrid Systems"
+      "zh": "On termination of polynomial programs with equality conditions",
+      "en": "On termination of polynomial programs with equality conditions"
     },
     "abstract": {
-      "zh": "I will report our recent work on the verification of stochastic dynamical and hybrid systems, including moment-based methods, stochastic barrier certificate based methods, Reach-avoid verification, and tolerant safety and reach-avoid verification. I also discuss stochastic solving, which is a fundamental problem in the verification of probabilistic programs and stochastic hybrid systems.",
-      "en": "I will report our recent work on the verification of stochastic dynamical and hybrid systems, including moment-based methods, stochastic barrier certificate based methods, Reach-avoid verification, and tolerant safety and reach-avoid verification. I also discuss stochastic solving, which is a fundamental problem in the verification of probabilistic programs and stochastic hybrid systems."
+      "zh": "We investigate the termination problem of a family of multi-path polynomial programs (MPPs) over an effective field K, in which all assignments to program variables are polynomials, and test conditions of loops and conditional statements are polynomial equalities. We show that the set of non-terminating inputs (NTI) of such a program is algorithmically computable, which in turn yields the decidability of its termination on a given input – and that on a semi-algebraic set of inputs when K is R. To the best of our knowledge, the considered family of MPPs is hitherto the largest fragment of nonlinear programs for which termination is decidable. We present an explicit recursive function, essentially of Ackermannian growth, to compute the maximal length of ascending chains of polynomial ideals under a control function, thereby providing a complete answer to the questions raised by Seidenberg. This maximal length facilitates a precise complexity analysis of our algorithms for computing the NTI and deciding termination of MPPs. We further extend our approach to programs with polynomial guarded commands and show how an incomplete procedure for MPPs with inequality guards can be obtained. Finally, we show that our decidability result gives rise to a complete method for computing all polynomial equality invariants (of a fixed degree) of polynomial programs.",
+      "en": "We investigate the termination problem of a family of multi-path polynomial programs (MPPs) over an effective field K, in which all assignments to program variables are polynomials, and test conditions of loops and conditional statements are polynomial equalities. We show that the set of non-terminating inputs (NTI) of such a program is algorithmically computable, which in turn yields the decidability of its termination on a given input – and that on a semi-algebraic set of inputs when K is R. To the best of our knowledge, the considered family of MPPs is hitherto the largest fragment of nonlinear programs for which termination is decidable. We present an explicit recursive function, essentially of Ackermannian growth, to compute the maximal length of ascending chains of polynomial ideals under a control function, thereby providing a complete answer to the questions raised by Seidenberg. This maximal length facilitates a precise complexity analysis of our algorithms for computing the NTI and deciding termination of MPPs. We further extend our approach to programs with polynomial guarded commands and show how an incomplete procedure for MPPs with inequality guards can be obtained. Finally, we show that our decidability result gives rise to a complete method for computing all polynomial equality invariants (of a fixed degree) of polynomial programs."
     },
     "bio": {
       "zh": "詹乃军，男，1971年5月生，北京大学计算机学院博雅特聘教授，国家杰出青年科学基金获得者。之前，为中科院软件所研究员，中科院特聘研究员，中国科学院大学岗位教授，计算机科学国家重点实验室执行主任。分别在南京大学数学系（1989-1993）和南京大学计算机系（1993-1996）获得学士和硕士学位，在中国科学院软件研究所获得博士学位（1997-2000）。研究方向包括：形式化方法，实时、嵌入式、混成系统，程序验证等。任《Journal of Automated Reasoning》、《Formal Aspects of Computing》、《J. of Logical and Algebraic Methods in Programming》、《Research Direction: Cyber-Physical Systems》、《软件学报》、《计算机研究与发展》《电子学报》、《前瞻科技》等期刊编委，国际会议MEMOCODE和SETTA的指导委员会委员，多个国际会议程序委员会共同主席（如形式化方法旗舰会议FM 2021 和验证领域顶级会议TACAS 2027）和著名国际会议程序委员会委员（如CAV、RTSS、HSCC、ICCPS、EMSOFT等）；在著名国际会议和杂志发表论文150多篇，出版专著2部，编著4部，国际国内著名杂志专刊7辑等。现任CCF形式化方法专委主任。",
       "en": "Naijun Zhan is a Boya distinguished professor in the School of Computer Science of Peking University. He got his BSc and MSc both from Nanjing University, and his PhD from Institute of Software Chinese Academy of Sciences (ISCAS). Prior to join Peking University, he worked at the Faculty of Mathematics and Informatics, Mannheim University, Germany as a research fellow, and afterwards worked at ISCAS as an associate professor, a full professor, and a distinguished professor. His research interests cover formal design of real-time, embedded and hybrid systems, program verification. He is in the editorial boards of Journal of Automated Reasoning, Formal Aspects of Computing, Journal of Logical and Algebraic Methods in Programming, Journal of Software, Journal of Electronics, and Journal of Computer Research and Development and so on, a member of the steering committees of SETTA and MEMOCODE, the pc co-chairs of TACAS 2027, ICFEM 2025, FM 2021 and SETTA 2016, the general co-chairs of SETTA 2025, MEMOCODE 2019, MEMOCODE2018 and ICESS 2019, and serves more than 100 international conferences program committees e.g., CAV, RTSS, HSCC, FM, TACAS, EMSOFT, etc. He published more than 150 papers in international leading journals and conferences and 2 books, and edited 5 conference proceedings and 7 journal special issues. See lcs.ios.ac.cn/~znj for more details."
+    }
+  },
+  "pinyan-lu": {
+    "id": "pinyan-lu",
+    "kind": "panel",
+    "name": {
+      "zh": "陆品燕",
+      "en": "Pinyan Lu"
+    },
+    "aff": {
+      "zh": "上海财经大学",
+      "en": "Shanghai University of Finance and Economics"
+    },
+    "photo": "assets/speakers/pinyan-lu.jpg",
+    "title": {
+      "zh": "AI时代的算法研究",
+      "en": "Algorithm Research in the AI Era"
+    },
+    "abstract": {
+      "zh": "嘉宾待定",
+      "en": "Panelists TBA"
+    },
+    "bio": {
+      "zh": "陆品燕，上海财经大学“长江学者”特聘教授，计算机与人工智能学院创院院长，华为泰勒实验室首席科学家。他的主要研究方向是理论计算机，并注重与其它学科的交叉，近年来也关注求解器算法与大模型机理的研究。曾荣获ACM杰出科学家奖、第八届世界华人数学家大会ICCM数学奖（原晨兴数学奖）银奖、中国计算机学会青年科学家（2014）等荣誉。",
+      "en": "Pinyan Lu is a Changjiang Distinguished Professor at Shanghai University of Finance and Economics, founding dean of the School of Computing and Artificial Intelligence, and chief scientist at Huawei Taylor Lab. His main research area is theoretical computer science, with an emphasis on connections with other disciplines. In recent years, he has also worked on solver algorithms and mechanisms of large language models. He has received honors including ACM Distinguished Scientist, the silver medal of the ICCM Mathematics Award at the 8th International Congress of Chinese Mathematicians, and the CCF Young Scientist Award (2014)."
     }
   },
   "xiaoming-sun": {
@@ -139,12 +164,12 @@ const SPEAKERS = {
     },
     "photo": "assets/speakers/zhendong-lei.jpg",
     "title": {
-      "zh": "待定",
-      "en": "TBA"
+      "zh": "从工业应用看模型表达能力与算法设计",
+      "en": "从工业应用看模型表达能力与算法设计"
     },
     "abstract": {
-      "zh": "待定",
-      "en": "TBA"
+      "zh": "随着各领域业务的发展，实际工业问题的规模呈指数级增长，其内在约束与耦合关系日益复杂。这往往导致直接构建的单一数学模型（如混合整数线性规划MILP）面临变量与约束规模爆炸的难题，致使求解难度陡增，甚至无法求解。而当前主流求解器技术多针对特定范式（如SAT、MIP等）独立设计，难以应对此类复杂场景。本报告将从工业应用视角出发，剖析实际场景中蕴含的复杂约束特征，深入探讨模型表达能力与算法设计在实际落地中的权衡关系及效能表现。最后，本报告将介绍泰勒实验室在该方向上的探索与最新研究进展。",
+      "en": "随着各领域业务的发展，实际工业问题的规模呈指数级增长，其内在约束与耦合关系日益复杂。这往往导致直接构建的单一数学模型（如混合整数线性规划MILP）面临变量与约束规模爆炸的难题，致使求解难度陡增，甚至无法求解。而当前主流求解器技术多针对特定范式（如SAT、MIP等）独立设计，难以应对此类复杂场景。本报告将从工业应用视角出发，剖析实际场景中蕴含的复杂约束特征，深入探讨模型表达能力与算法设计在实际落地中的权衡关系及效能表现。最后，本报告将介绍泰勒实验室在该方向上的探索与最新研究进展。"
     },
     "bio": {
       "zh": "雷震东，中科院博士，现任华为泰勒实验室，智能决策团队负责人。主要从事运筹优化、约束求解以及机制设计等相关研究工作，有10年求解器研发经验，在国际相关比赛中获得多个冠军。曾获得中科院院长特别奖、华为金牌个人等荣誉。"
@@ -412,7 +437,13 @@ function textFor(value) {
   return value[lang] || value.zh || value.en || "";
 }
 
-function labels() {
+function labels(kind) {
+  if (kind === "panel") {
+    if (locale() === "en") {
+      return { title: "Panel Topic", abstract: "Panelists", bio: "Host Bio" };
+    }
+    return { title: "Panel 主题", abstract: "嘉宾", bio: "主持人简介" };
+  }
   if (locale() === "en") {
     return { title: "Talk Title", abstract: "Abstract", bio: "Speaker Bio" };
   }
@@ -445,7 +476,7 @@ function appendLabel(parent, text) {
 function renderSpeaker(sid) {
   const speaker = SPEAKERS[sid];
   if (!speaker || !modalBody) return;
-  const l = labels();
+  const l = labels(speaker.kind);
   modalBody.replaceChildren();
 
   const inner = document.createElement("div");
