@@ -660,6 +660,21 @@ h3 {
   font-weight: 700;
 }
 
+.program-table .panel-poster-link {
+  display: inline-flex;
+  margin-top: 8px;
+  color: var(--sdu-red);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.program-table .panel-poster-link:hover,
+.program-table .panel-poster-link:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
 .program-table .tea-break td,
 .program-table .row-break td {
   color: var(--sdu-red-dark);
@@ -946,6 +961,27 @@ h3 {
 
 .speaker-modal-text p + p {
   margin-top: 12px;
+}
+
+.speaker-poster-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  margin-top: 20px;
+  padding: 9px 14px;
+  color: #fff;
+  background: var(--sdu-red);
+  border: 1px solid var(--sdu-red);
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.speaker-poster-link:hover,
+.speaker-poster-link:focus-visible {
+  background: var(--sdu-red-dark);
+  border-color: var(--sdu-red-dark);
+  outline: none;
 }
 
 .registration-layout {
