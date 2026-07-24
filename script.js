@@ -71,7 +71,6 @@ const SPEAKERS = {
       "en": "Shanghai University of Finance and Economics"
     },
     "photo": "assets/speakers/pinyan-lu.jpg",
-    "poster": "panel-posters/png/02-陆品燕-pinyan-lu.png",
     "title": {
       "zh": "AI时代的算法研究",
       "en": "Algorithm Research in the AI Era"
@@ -512,16 +511,6 @@ function renderSpeaker(sid) {
   appendLabel(content, l.bio);
   appendTextBlock(content, "speaker-modal-text", textFor(speaker.bio));
 
-  if (speaker.poster) {
-    const posterLink = document.createElement("a");
-    posterLink.className = "speaker-poster-link";
-    posterLink.href = speaker.poster;
-    posterLink.target = "_blank";
-    posterLink.rel = "noopener";
-    posterLink.textContent = locale() === "en" ? "View Personal Poster" : "查看个人海报";
-    content.append(posterLink);
-  }
-
   inner.append(content);
   modalBody.append(inner);
 }
@@ -551,8 +540,6 @@ document.addEventListener("click", (event) => {
     openSpeaker(opener.dataset.speakerOpen);
     return;
   }
-
-  if (event.target.closest("a[href]")) return;
 
   const row = event.target.closest("tr[data-sid]");
   if (row) {
