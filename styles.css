@@ -660,21 +660,6 @@ h3 {
   font-weight: 700;
 }
 
-.program-table .panel-poster-link {
-  display: inline-flex;
-  margin-top: 8px;
-  color: var(--sdu-red);
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.program-table .panel-poster-link:hover,
-.program-table .panel-poster-link:focus-visible {
-  text-decoration: underline;
-  outline: none;
-}
-
 .program-table .tea-break td,
 .program-table .row-break td {
   color: var(--sdu-red-dark);
