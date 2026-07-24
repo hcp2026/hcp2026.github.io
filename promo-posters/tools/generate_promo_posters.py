@@ -355,6 +355,8 @@ AGENDA_CSS = """
   background: #faf1e7;
 }
 .agenda-table .panel td {
+  padding-top: 6px;
+  padding-bottom: 6px;
   background: #f6f8fb;
 }
 .agenda-table .panel-label {
@@ -374,8 +376,8 @@ AGENDA_CSS = """
 .agenda-table .panel-meta {
   margin-top: 3px;
   color: #69707d;
-  font-size: 14px;
-  line-height: 1.32;
+  font-size: 12px;
+  line-height: 1.24;
   font-weight: 800;
 }
 .agenda-table .panel-meta span {
@@ -860,7 +862,9 @@ def agenda_html(speakers: dict[str, dict]) -> str:
                     '<div class="panel-label">Panel Discussion</div>'
                     '<div class="panel-topic">AI时代的算法研究</div>'
                     '<div class="panel-meta"><span>主持人：</span>陆品燕（上海财经大学）</div>'
-                    '<div class="panel-meta"><span>嘉宾：</span>待定</div>'
+                    '<div class="panel-meta"><span>嘉宾：</span>'
+                    "詹乃军（北京大学）、孙晓明（中科院计算所）、冯启龙（中南大学）、"
+                    "袁明轩（华为诺亚方舟实验室）、王肇国（上海交大）、李旻（东南大学）</div>"
                 )
                 rows.append(
                     f'<tr class="panel"><td class="time">{esc(time)}</td><td>{label}</td></tr>'

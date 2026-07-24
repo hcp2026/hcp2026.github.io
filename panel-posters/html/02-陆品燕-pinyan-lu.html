@@ -215,6 +215,37 @@ html, body {
   line-height: 1.82;
   text-align: justify;
 }
+.person-guests {
+  margin-top: 34px;
+}
+.person-guests h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 30px;
+}
+.person-guest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+.person-guest {
+  padding: 14px 18px;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+}
+.person-guest strong {
+  color: #f7dfaa;
+  font-size: 18px;
+}
+.person-guest span {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,.84);
+  font-size: 13px;
+  line-height: 1.4;
+}
 </style>
 </head>
 <body>
@@ -246,6 +277,10 @@ html, body {
       <section class="bio-section">
         <h3>个人简介</h3>
         <div class="bio-card"><p>陆品燕，上海财经大学“长江学者”特聘教授，计算机与人工智能学院创院院长，华为泰勒实验室首席科学家。他的主要研究方向是理论计算机，并注重与其它学科的交叉，近年来也关注求解器算法与大模型机理的研究。曾荣获ACM杰出科学家奖、第八届世界华人数学家大会ICCM数学奖（原晨兴数学奖）银奖、中国计算机学会青年科学家（2014）等荣誉。</p></div>
+      </section>
+      <section class="person-guests">
+        <h3>Panel 嘉宾</h3>
+        <div class="person-guest-grid"><div class="person-guest"><strong>詹乃军</strong><span>北京大学计算机学院</span></div><div class="person-guest"><strong>孙晓明</strong><span>中国科学院计算技术研究所</span></div><div class="person-guest"><strong>冯启龙</strong><span>中南大学计算机学院</span></div><div class="person-guest"><strong>袁明轩</strong><span>华为诺亚方舟实验室 / 香港诺亚方舟实验室</span></div><div class="person-guest"><strong>王肇国</strong><span>上海交通大学</span></div><div class="person-guest"><strong>李旻</strong><span>东南大学集成电路学院</span></div></div>
       </section>
     
       <footer class="footer">

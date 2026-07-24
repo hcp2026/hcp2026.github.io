@@ -76,8 +76,8 @@ const SPEAKERS = {
       "en": "Algorithm Research in the AI Era"
     },
     "abstract": {
-      "zh": "嘉宾待定",
-      "en": "Panelists TBA"
+      "zh": "詹乃军（北京大学计算机学院）\n\n孙晓明（中国科学院计算技术研究所）\n\n冯启龙（中南大学计算机学院）\n\n袁明轩（华为诺亚方舟实验室 / 香港诺亚方舟实验室）\n\n王肇国（上海交通大学）\n\n李旻（东南大学集成电路学院）",
+      "en": "Naijun Zhan (School of Computer Science, Peking University)\n\nXiaoming Sun (Institute of Computing Technology, CAS)\n\nQilong Feng (School of Computer Science and Engineering, Central South University)\n\nMingxuan Yuan (Huawei Noah's Ark Lab / Hong Kong Noah's Ark Lab)\n\nZhaoguo Wang (Shanghai Jiao Tong University)\n\nMin Li (School of Integrated Circuits, Southeast University)"
     },
     "bio": {
       "zh": "陆品燕，上海财经大学“长江学者”特聘教授，计算机与人工智能学院创院院长，华为泰勒实验室首席科学家。他的主要研究方向是理论计算机，并注重与其它学科的交叉，近年来也关注求解器算法与大模型机理的研究。曾荣获ACM杰出科学家奖、第八届世界华人数学家大会ICCM数学奖（原晨兴数学奖）银奖、中国计算机学会青年科学家（2014）等荣誉。",

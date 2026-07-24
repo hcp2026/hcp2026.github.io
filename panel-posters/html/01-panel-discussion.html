@@ -126,8 +126,8 @@ html, body {
 }
 
 .panel-main {
-  margin-top: 88px;
-  padding: 46px 48px 44px;
+  margin-top: 40px;
+  padding: 28px 34px;
   background: rgba(255,255,255,.11);
   border: 1px solid rgba(255,255,255,.20);
   border-left: 9px solid #f7dfaa;
@@ -135,33 +135,36 @@ html, body {
   box-shadow: 0 24px 70px rgba(0,0,0,.26);
 }
 .panel-main h2 {
-  margin: 16px 0 0;
+  margin: 10px 0 0;
   color: #fff;
-  font-size: 76px;
+  font-size: 62px;
   line-height: 1.08;
   font-weight: 900;
 }
 .panel-main .topic {
-  margin-top: 28px;
+  margin-top: 14px;
   color: #fff;
-  font-size: 48px;
+  font-size: 38px;
   line-height: 1.28;
   font-weight: 900;
 }
+.panel-main .pill-row {
+  margin-top: 16px;
+}
 .host-card {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 34px;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 26px;
   align-items: center;
-  margin-top: 62px;
-  padding: 28px;
+  margin-top: 32px;
+  padding: 22px;
   background: rgba(255,255,255,.90);
   color: #17191f;
   border-radius: 22px;
   box-shadow: 0 18px 50px rgba(0,0,0,.22);
 }
 .host-card img {
-  width: 280px;
+  width: 220px;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 42%;
@@ -174,48 +177,81 @@ html, body {
   color: #fff;
   background: #a71930;
   border-radius: 7px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
   letter-spacing: 4px;
 }
 .host-name {
-  margin-top: 18px;
+  margin-top: 10px;
   color: #761120;
-  font-size: 56px;
+  font-size: 44px;
   font-weight: 900;
 }
 .host-aff {
-  margin-top: 10px;
+  margin-top: 6px;
   color: #59606c;
-  font-size: 25px;
+  font-size: 22px;
   line-height: 1.35;
   font-weight: 800;
 }
 .host-bio-label {
-  margin-top: 22px;
+  margin-top: 12px;
   color: #a2783c;
   font-size: 16px;
   font-weight: 900;
   letter-spacing: 4px;
 }
 .host-bio {
-  margin-top: 8px;
+  margin-top: 5px;
   color: #333844;
-  font-size: 18px;
-  line-height: 1.62;
+  font-size: 15.5px;
+  line-height: 1.42;
   text-align: justify;
 }
 .guest-box {
-  margin-top: 44px;
-  padding: 34px 38px;
+  margin-top: 24px;
+  padding: 20px;
   background: rgba(247, 223, 170, .16);
   border: 1px solid rgba(247, 223, 170, .30);
   border-radius: 18px;
 }
-.guest-box .text {
+.guest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   margin-top: 12px;
-  font-size: 38px;
+}
+.guest-card {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 4px 10px;
+  min-width: 0;
+  padding: 9px;
+  color: #17191f;
+  background: rgba(255,255,255,.92);
+  border-radius: 12px;
+}
+.guest-card img {
+  grid-row: 1 / 3;
+  width: 86px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 42%;
+  border-radius: 8px;
+}
+.guest-card .name {
+  margin-top: 3px;
+  color: #761120;
+  font-size: 19px;
   font-weight: 900;
+}
+.guest-card .aff {
+  margin-top: 0;
+  color: #59606c;
+  font-size: 11px;
+  line-height: 1.3;
+  font-weight: 800;
 }
 </style>
 </head>
@@ -254,7 +290,31 @@ html, body {
       </section>
       <section class="guest-box">
         <div class="section-label">PANELISTS</div>
-        <div class="text">嘉宾待定</div>
+        <div class="guest-grid"><article class="guest-card">
+          <img src="../../assets/speakers/naijun-zhan.jpeg" alt="詹乃军" />
+          <div class="name">詹乃军</div>
+          <div class="aff">北京大学计算机学院</div>
+        </article><article class="guest-card">
+          <img src="../../assets/speakers/xiaoming-sun.png" alt="孙晓明" />
+          <div class="name">孙晓明</div>
+          <div class="aff">中国科学院计算技术研究所</div>
+        </article><article class="guest-card">
+          <img src="../../assets/speakers/qilong-feng.jpeg" alt="冯启龙" />
+          <div class="name">冯启龙</div>
+          <div class="aff">中南大学计算机学院</div>
+        </article><article class="guest-card">
+          <img src="../../assets/speakers/mingxuan-yuan.jpg" alt="袁明轩" />
+          <div class="name">袁明轩</div>
+          <div class="aff">华为诺亚方舟实验室 / 香港诺亚方舟实验室</div>
+        </article><article class="guest-card">
+          <img src="../../assets/speakers/zhaoguo-wang.jpeg" alt="王肇国" />
+          <div class="name">王肇国</div>
+          <div class="aff">上海交通大学</div>
+        </article><article class="guest-card">
+          <img src="../../assets/speakers/min-li.png" alt="李旻" />
+          <div class="name">李旻</div>
+          <div class="aff">东南大学集成电路学院</div>
+        </article></div>
       </section>
     
       <footer class="footer">

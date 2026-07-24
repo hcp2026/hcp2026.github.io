@@ -28,6 +28,19 @@ PHOTO = "../../assets/speakers/pinyan-lu.jpg"
 LOGO = "../../assets/sdu-logo.svg"
 BG = "../../assets/sdu-qingdao-library-hero.jpg"
 
+PANELISTS = [
+    ("詹乃军", "北京大学计算机学院", "assets/speakers/naijun-zhan.jpeg"),
+    ("孙晓明", "中国科学院计算技术研究所", "assets/speakers/xiaoming-sun.png"),
+    ("冯启龙", "中南大学计算机学院", "assets/speakers/qilong-feng.jpeg"),
+    (
+        "袁明轩",
+        "华为诺亚方舟实验室 / 香港诺亚方舟实验室",
+        "assets/speakers/mingxuan-yuan.jpg",
+    ),
+    ("王肇国", "上海交通大学", "assets/speakers/zhaoguo-wang.jpeg"),
+    ("李旻", "东南大学集成电路学院", "assets/speakers/min-li.png"),
+]
+
 CHROME_CANDIDATES = [
     Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
     Path("/Applications/Chromium.app/Contents/MacOS/Chromium"),
@@ -55,7 +68,9 @@ def font(path: Path, size: int) -> ImageFont.FreeTypeFont:
     return ImageFont.truetype(str(selected), size)
 
 
-def text_size(draw: ImageDraw.ImageDraw, text: str, font_obj: ImageFont.FreeTypeFont) -> tuple[int, int]:
+def text_size(
+    draw: ImageDraw.ImageDraw, text: str, font_obj: ImageFont.FreeTypeFont
+) -> tuple[int, int]:
     bbox = draw.textbbox((0, 0), text, font=font_obj)
     return bbox[2] - bbox[0], bbox[3] - bbox[1]
 
@@ -71,12 +86,19 @@ def draw_text(
     draw.text(xy, text, font=font_obj, fill=fill, spacing=spacing)
 
 
-def wrap_text(draw: ImageDraw.ImageDraw, text: str, font_obj: ImageFont.FreeTypeFont, max_width: int) -> list[str]:
+def wrap_text(
+    draw: ImageDraw.ImageDraw,
+    text: str,
+    font_obj: ImageFont.FreeTypeFont,
+    max_width: int,
+) -> list[str]:
     units = text.split(" ") if " " in text else list(text)
     lines: list[str] = []
     current = ""
     for unit in units:
-        candidate = unit if not current else (current + (" " if " " in text else "") + unit)
+        candidate = (
+            unit if not current else (current + (" " if " " in text else "") + unit)
+        )
         if text_size(draw, candidate, font_obj)[0] <= max_width:
             current = candidate
         else:
@@ -104,9 +126,16 @@ def draw_wrapped(
     return y
 
 
-def cover_image(path: Path, size: tuple[int, int], position: tuple[float, float] = (0.5, 0.5)) -> Image.Image:
+def cover_image(
+    path: Path, size: tuple[int, int], position: tuple[float, float] = (0.5, 0.5)
+) -> Image.Image:
     with Image.open(path) as img:
-        return ImageOps.fit(img.convert("RGB"), size, method=Image.Resampling.LANCZOS, centering=position)
+        return ImageOps.fit(
+            img.convert("RGB"),
+            size,
+            method=Image.Resampling.LANCZOS,
+            centering=position,
+        )
 
 
 def rounded_overlay(
@@ -124,7 +153,9 @@ def rounded_overlay(
 
 
 def make_background() -> Image.Image:
-    bg = cover_image(ROOT / "assets/sdu-qingdao-library-hero.jpg", POSTER_SIZE, (0.5, 0.65)).convert("RGBA")
+    bg = cover_image(
+        ROOT / "assets/sdu-qingdao-library-hero.jpg", POSTER_SIZE, (0.5, 0.65)
+    ).convert("RGBA")
     overlay = Image.new("RGBA", POSTER_SIZE, (0, 0, 0, 0))
     od = ImageDraw.Draw(overlay)
     for y in range(POSTER_SIZE[1]):
@@ -143,70 +174,148 @@ def make_background() -> Image.Image:
     top = Image.new("RGBA", POSTER_SIZE, (0, 0, 0, 0))
     td = ImageDraw.Draw(top)
     td.rectangle((0, 0, POSTER_SIZE[0], 32), fill=(167, 25, 48, 255))
-    td.rectangle((POSTER_SIZE[0] - 520, 0, POSTER_SIZE[0], 32), fill=(216, 177, 95, 255))
+    td.rectangle(
+        (POSTER_SIZE[0] - 520, 0, POSTER_SIZE[0], 32), fill=(216, 177, 95, 255)
+    )
     bg.alpha_composite(top)
     return bg
 
 
 def draw_brand(draw: ImageDraw.ImageDraw) -> None:
     draw_text(draw, (144, 136), "山东大学", font(FONT_SANS, 70), WHITE)
-    draw_text(draw, (148, 220), "SHANDONG UNIVERSITY", font(FONT_SERIF, 28), (255, 255, 255, 230))
+    draw_text(
+        draw,
+        (148, 220),
+        "SHANDONG UNIVERSITY",
+        font(FONT_SERIF, 28),
+        (255, 255, 255, 230),
+    )
     draw_text(draw, (1760, 140), "专题海报", font(FONT_SANS, 44), GOLD)
 
 
 def draw_event(draw: ImageDraw.ImageDraw, y: int = 360) -> None:
     draw_text(draw, (144, y), "第  九  届", font(FONT_SANS, 48), GOLD)
     draw_text(draw, (144, y + 106), "HCP 2026", font(FONT_SERIF, 210), WHITE)
-    draw_text(draw, (144, y + 350), "难解问题的理论、算法与应用研讨会", font(FONT_SANS, 62), WHITE)
+    draw_text(
+        draw,
+        (144, y + 350),
+        "难解问题的理论、算法与应用研讨会",
+        font(FONT_SANS, 62),
+        WHITE,
+    )
 
 
 def draw_footer(draw: ImageDraw.ImageDraw) -> None:
     y = 3630
     draw.line((144, y, 2016, y), fill=(255, 255, 255, 70), width=2)
-    draw_text(draw, (144, y + 46), "2026.07.31 – 08.02 · 山东大学青岛校区", font(FONT_SANS, 38), GOLD)
+    draw_text(
+        draw,
+        (144, y + 46),
+        "2026.07.31 – 08.02 · 山东大学青岛校区",
+        font(FONT_SANS, 38),
+        GOLD,
+    )
     draw_text(draw, (1608, y + 46), "hcp2026.sincst.cn", font(FONT_SERIF, 39), GOLD)
 
 
-def draw_pill(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], label: str) -> None:
+def draw_pill(
+    draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], label: str
+) -> None:
     draw.rounded_rectangle(box, radius=(box[3] - box[1]) // 2, fill=(244, 223, 176))
     tw, th = text_size(draw, label, font(FONT_SANS, 42))
-    draw_text(draw, (box[0] + (box[2] - box[0] - tw) // 2, box[1] + (box[3] - box[1] - th) // 2 - 8), label, font(FONT_SANS, 42), RED)
+    draw_text(
+        draw,
+        (
+            box[0] + (box[2] - box[0] - tw) // 2,
+            box[1] + (box[3] - box[1] - th) // 2 - 8,
+        ),
+        label,
+        font(FONT_SANS, 42),
+        RED,
+    )
+
+
+def draw_panelist_card(
+    img: Image.Image,
+    box: tuple[int, int, int, int],
+    name: str,
+    aff: str,
+    photo_path: str,
+) -> None:
+    rounded_overlay(img, box, (255, 255, 255, 232), 28)
+    x1, y1, _, _ = box
+    photo = cover_image(ROOT / photo_path, (170, 212), (0.5, 0.45)).convert("RGBA")
+    mask = Image.new("L", photo.size, 0)
+    mask_draw = ImageDraw.Draw(mask)
+    mask_draw.rounded_rectangle((0, 0, *photo.size), radius=22, fill=255)
+    img.paste(photo, (x1 + 24, y1 + 24), mask)
+    draw = ImageDraw.Draw(img)
+    draw_text(draw, (x1 + 220, y1 + 38), name, font(FONT_SANS, 48), RED)
+    draw_wrapped(
+        draw,
+        (x1 + 220, y1 + 112),
+        aff,
+        font(FONT_SANS, 27),
+        330,
+        42,
+        (89, 96, 108),
+    )
 
 
 def save_panel_png(path: Path) -> None:
     img = make_background()
     draw = ImageDraw.Draw(img)
     draw_brand(draw)
-    draw_event(draw)
+    draw_event(draw, 300)
 
-    rounded_overlay(img, (144, 1060, 2016, 1780), (255, 255, 255, 30), 44, (255, 255, 255, 54), 2)
+    rounded_overlay(
+        img, (144, 820, 2016, 1320), (255, 255, 255, 30), 44, (255, 255, 255, 54), 2
+    )
     draw = ImageDraw.Draw(img)
-    draw.rectangle((144, 1060, 164, 1780), fill=GOLD)
-    draw_text(draw, (214, 1148), "PANEL DISCUSSION", font(FONT_SERIF, 44), GOLD)
-    draw_text(draw, (214, 1240), "Panel Discussion", font(FONT_SANS, 130), WHITE)
-    draw_text(draw, (214, 1430), "AI时代的算法研究", font(FONT_SANS, 94), WHITE)
-    draw_pill(draw, (214, 1606, 620, 1700), "2026年8月1日")
-    draw_pill(draw, (652, 1606, 1010, 1700), "15:45-16:45")
+    draw.rectangle((144, 820, 164, 1320), fill=GOLD)
+    draw_text(draw, (214, 870), "PANEL DISCUSSION", font(FONT_SERIF, 40), GOLD)
+    draw_text(draw, (214, 950), "Panel Discussion", font(FONT_SANS, 104), WHITE)
+    draw_text(draw, (214, 1095), "AI时代的算法研究", font(FONT_SANS, 72), WHITE)
+    draw_pill(draw, (214, 1200, 620, 1288), "2026年8月1日")
+    draw_pill(draw, (652, 1200, 1010, 1288), "15:45-16:45")
 
-    rounded_overlay(img, (144, 1910, 2016, 2840), (255, 255, 255, 230), 44)
-    photo = cover_image(ROOT / "assets/speakers/pinyan-lu.jpg", (520, 650), (0.52, 0.43)).convert("RGBA")
+    rounded_overlay(img, (144, 1380, 2016, 2160), (255, 255, 255, 230), 44)
+    photo = cover_image(
+        ROOT / "assets/speakers/pinyan-lu.jpg", (420, 525), (0.52, 0.43)
+    ).convert("RGBA")
     mask = Image.new("L", photo.size, 0)
     md = ImageDraw.Draw(mask)
     md.rounded_rectangle((0, 0, *photo.size), radius=34, fill=255)
-    img.paste(photo, (204, 1965), mask)
+    img.paste(photo, (204, 1440), mask)
     draw = ImageDraw.Draw(img)
-    draw.rounded_rectangle((800, 2016, 990, 2080), radius=12, fill=(167, 25, 48))
-    draw_text(draw, (832, 2024), "主持人", font(FONT_SANS, 34), WHITE)
-    draw_text(draw, (800, 2150), "陆品燕", font(FONT_SANS, 112), RED)
-    draw_text(draw, (800, 2296), "上海财经大学", font(FONT_SANS, 52), (89, 96, 108))
-    draw_text(draw, (800, 2388), "个人简介", font(FONT_SANS, 31), (162, 120, 60))
-    draw_wrapped(draw, (800, 2444), BIO, font(FONT_SANS, 25), 1100, 43, (51, 56, 68))
+    draw.rounded_rectangle((670, 1440, 860, 1504), radius=12, fill=(167, 25, 48))
+    draw_text(draw, (702, 1448), "主持人", font(FONT_SANS, 34), WHITE)
+    draw_text(draw, (670, 1550), "陆品燕", font(FONT_SANS, 82), RED)
+    draw_text(draw, (670, 1660), "上海财经大学", font(FONT_SANS, 42), (89, 96, 108))
+    draw_text(draw, (670, 1735), "个人简介", font(FONT_SANS, 29), (162, 120, 60))
+    draw_wrapped(draw, (670, 1785), BIO, font(FONT_SANS, 25), 1260, 42, (51, 56, 68))
 
-    rounded_overlay(img, (144, 2890, 2016, 3130), (247, 223, 170, 42), 34, (247, 223, 170, 90), 2)
+    draw_text(draw, (144, 2230), "嘉宾", font(FONT_SANS, 62), WHITE)
+    draw_text(draw, (310, 2248), "PANELISTS", font(FONT_SERIF, 38), GOLD)
+    card_positions = [
+        (144, 2325, 748, 2745),
+        (778, 2325, 1382, 2745),
+        (1412, 2325, 2016, 2745),
+        (144, 2775, 748, 3195),
+        (778, 2775, 1382, 3195),
+        (1412, 2775, 2016, 3195),
+    ]
+    for panelist, box in zip(PANELISTS, card_positions, strict=True):
+        draw_panelist_card(img, box, *panelist)
+
     draw = ImageDraw.Draw(img)
-    draw_text(draw, (214, 2938), "PANELISTS", font(FONT_SERIF, 42), GOLD)
-    draw_text(draw, (214, 3024), "嘉宾待定", font(FONT_SANS, 82), WHITE)
-    draw_text(draw, (214, 3230), "地点：山东大学青岛校区淦昌苑D座305会议厅", font(FONT_SANS, 42), (255, 255, 255, 220))
+    draw_text(
+        draw,
+        (144, 3290),
+        "地点：山东大学青岛校区淦昌苑D座305会议厅",
+        font(FONT_SANS, 38),
+        (255, 255, 255, 220),
+    )
     draw_footer(draw)
     img.convert("RGB").save(path, optimize=True)
 
@@ -215,31 +324,65 @@ def save_person_png(path: Path) -> None:
     img = make_background()
     draw = ImageDraw.Draw(img)
     draw_brand(draw)
-    draw_event(draw, 340)
+    draw_event(draw, 280)
 
-    photo = cover_image(ROOT / "assets/speakers/pinyan-lu.jpg", (660, 825), (0.52, 0.43)).convert("RGBA")
+    photo = cover_image(
+        ROOT / "assets/speakers/pinyan-lu.jpg", (560, 700), (0.52, 0.43)
+    ).convert("RGBA")
     mask = Image.new("L", photo.size, 0)
     md = ImageDraw.Draw(mask)
     md.rounded_rectangle((0, 0, *photo.size), radius=38, fill=255)
-    img.paste(photo, (144, 1010), mask)
+    img.paste(photo, (144, 860), mask)
 
     draw = ImageDraw.Draw(img)
-    draw.rounded_rectangle((884, 1060, 1395, 1132), radius=12, fill=(167, 25, 48))
-    draw_text(draw, (914, 1072), "PANEL DISCUSSION 主持人", font(FONT_SANS, 35), WHITE)
-    draw_text(draw, (884, 1218), "陆品燕", font(FONT_SANS, 128), WHITE)
-    draw_text(draw, (884, 1380), "上海财经大学", font(FONT_SANS, 54), (255, 255, 255, 210))
+    draw.rounded_rectangle((770, 900, 1281, 972), radius=12, fill=(167, 25, 48))
+    draw_text(draw, (800, 912), "PANEL DISCUSSION 主持人", font(FONT_SANS, 35), WHITE)
+    draw_text(draw, (770, 1040), "陆品燕", font(FONT_SANS, 112), WHITE)
+    draw_text(
+        draw, (770, 1185), "上海财经大学", font(FONT_SANS, 50), (255, 255, 255, 210)
+    )
 
-    rounded_overlay(img, (884, 1532, 2016, 1778), (255, 255, 255, 32), 22)
+    rounded_overlay(img, (770, 1320, 2016, 1560), (255, 255, 255, 32), 22)
     draw = ImageDraw.Draw(img)
-    draw.rectangle((884, 1532, 900, 1778), fill=GOLD)
-    draw_text(draw, (936, 1575), "专题讨论", font(FONT_SANS, 34), GOLD)
-    draw_wrapped(draw, (936, 1640), "AI时代的算法研究", font(FONT_SANS, 60), 980, 80, WHITE)
+    draw.rectangle((770, 1320, 786, 1560), fill=GOLD)
+    draw_text(draw, (822, 1360), "专题讨论", font(FONT_SANS, 34), GOLD)
+    draw_wrapped(
+        draw, (822, 1425), "AI时代的算法研究", font(FONT_SANS, 58), 1080, 76, WHITE
+    )
 
-    draw_text(draw, (144, 1988), "个人简介", font(FONT_SANS, 62), WHITE)
-    draw.line((420, 2026, 2016, 2026), fill=(255, 255, 255, 70), width=2)
-    rounded_overlay(img, (144, 2125, 2016, 3210), (255, 255, 255, 28), 34, (255, 255, 255, 54), 2)
+    draw_text(draw, (144, 1660), "个人简介", font(FONT_SANS, 54), WHITE)
+    draw.line((380, 1695, 2016, 1695), fill=(255, 255, 255, 70), width=2)
+    rounded_overlay(
+        img, (144, 1760, 2016, 2390), (255, 255, 255, 28), 34, (255, 255, 255, 54), 2
+    )
     draw = ImageDraw.Draw(img)
-    draw_wrapped(draw, (214, 2205), BIO, font(FONT_SANS, 51), 1730, 92, (255, 255, 255, 236))
+    draw_wrapped(
+        draw, (214, 1830), BIO, font(FONT_SANS, 40), 1730, 70, (255, 255, 255, 236)
+    )
+
+    draw_text(draw, (144, 2490), "Panel 嘉宾", font(FONT_SANS, 54), WHITE)
+    draw.line((440, 2525, 2016, 2525), fill=(255, 255, 255, 70), width=2)
+    guest_positions = [
+        (144, 2590, 1050, 2770),
+        (1110, 2590, 2016, 2770),
+        (144, 2810, 1050, 2990),
+        (1110, 2810, 2016, 2990),
+        (144, 3030, 1050, 3210),
+        (1110, 3030, 2016, 3210),
+    ]
+    for (name, aff, _), box in zip(PANELISTS, guest_positions, strict=True):
+        rounded_overlay(img, box, (255, 255, 255, 28), 24, (255, 255, 255, 50), 2)
+        draw = ImageDraw.Draw(img)
+        draw_text(draw, (box[0] + 30, box[1] + 28), name, font(FONT_SANS, 42), GOLD)
+        draw_wrapped(
+            draw,
+            (box[0] + 210, box[1] + 34),
+            aff,
+            font(FONT_SANS, 28),
+            650,
+            42,
+            (255, 255, 255, 220),
+        )
     draw_footer(draw)
     img.convert("RGB").save(path, optimize=True)
 
@@ -248,7 +391,11 @@ def chrome_path() -> Path:
     for candidate in CHROME_CANDIDATES:
         if candidate.exists():
             return candidate
-    from_path = shutil.which("google-chrome") or shutil.which("chromium") or shutil.which("chromium-browser")
+    from_path = (
+        shutil.which("google-chrome")
+        or shutil.which("chromium")
+        or shutil.which("chromium-browser")
+    )
     if from_path:
         return Path(from_path)
     raise RuntimeError("Cannot find Chrome or Chromium for rendering.")
@@ -381,10 +528,12 @@ html, body {{
 """
 
 
-PANEL_CSS = COMMON_CSS + """
+PANEL_CSS = (
+    COMMON_CSS
+    + """
 .panel-main {
-  margin-top: 88px;
-  padding: 46px 48px 44px;
+  margin-top: 40px;
+  padding: 28px 34px;
   background: rgba(255,255,255,.11);
   border: 1px solid rgba(255,255,255,.20);
   border-left: 9px solid #f7dfaa;
@@ -392,33 +541,36 @@ PANEL_CSS = COMMON_CSS + """
   box-shadow: 0 24px 70px rgba(0,0,0,.26);
 }
 .panel-main h2 {
-  margin: 16px 0 0;
+  margin: 10px 0 0;
   color: #fff;
-  font-size: 76px;
+  font-size: 62px;
   line-height: 1.08;
   font-weight: 900;
 }
 .panel-main .topic {
-  margin-top: 28px;
+  margin-top: 14px;
   color: #fff;
-  font-size: 48px;
+  font-size: 38px;
   line-height: 1.28;
   font-weight: 900;
 }
+.panel-main .pill-row {
+  margin-top: 16px;
+}
 .host-card {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 34px;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 26px;
   align-items: center;
-  margin-top: 62px;
-  padding: 28px;
+  margin-top: 32px;
+  padding: 22px;
   background: rgba(255,255,255,.90);
   color: #17191f;
   border-radius: 22px;
   box-shadow: 0 18px 50px rgba(0,0,0,.22);
 }
 .host-card img {
-  width: 280px;
+  width: 220px;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 42%;
@@ -431,53 +583,89 @@ PANEL_CSS = COMMON_CSS + """
   color: #fff;
   background: #a71930;
   border-radius: 7px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
   letter-spacing: 4px;
 }
 .host-name {
-  margin-top: 18px;
+  margin-top: 10px;
   color: #761120;
-  font-size: 56px;
+  font-size: 44px;
   font-weight: 900;
 }
 .host-aff {
-  margin-top: 10px;
+  margin-top: 6px;
   color: #59606c;
-  font-size: 25px;
+  font-size: 22px;
   line-height: 1.35;
   font-weight: 800;
 }
 .host-bio-label {
-  margin-top: 22px;
+  margin-top: 12px;
   color: #a2783c;
   font-size: 16px;
   font-weight: 900;
   letter-spacing: 4px;
 }
 .host-bio {
-  margin-top: 8px;
+  margin-top: 5px;
   color: #333844;
-  font-size: 18px;
-  line-height: 1.62;
+  font-size: 15.5px;
+  line-height: 1.42;
   text-align: justify;
 }
 .guest-box {
-  margin-top: 44px;
-  padding: 34px 38px;
+  margin-top: 24px;
+  padding: 20px;
   background: rgba(247, 223, 170, .16);
   border: 1px solid rgba(247, 223, 170, .30);
   border-radius: 18px;
 }
-.guest-box .text {
+.guest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   margin-top: 12px;
-  font-size: 38px;
+}
+.guest-card {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 4px 10px;
+  min-width: 0;
+  padding: 9px;
+  color: #17191f;
+  background: rgba(255,255,255,.92);
+  border-radius: 12px;
+}
+.guest-card img {
+  grid-row: 1 / 3;
+  width: 86px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 42%;
+  border-radius: 8px;
+}
+.guest-card .name {
+  margin-top: 3px;
+  color: #761120;
+  font-size: 19px;
   font-weight: 900;
 }
+.guest-card .aff {
+  margin-top: 0;
+  color: #59606c;
+  font-size: 11px;
+  line-height: 1.3;
+  font-weight: 800;
+}
 """
+)
 
 
-PERSON_CSS = COMMON_CSS + """
+PERSON_CSS = (
+    COMMON_CSS
+    + """
 .person-head {
   display: grid;
   grid-template-columns: 330px minmax(0, 1fr);
@@ -568,7 +756,39 @@ PERSON_CSS = COMMON_CSS + """
   line-height: 1.82;
   text-align: justify;
 }
+.person-guests {
+  margin-top: 34px;
+}
+.person-guests h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 30px;
+}
+.person-guest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+.person-guest {
+  padding: 14px 18px;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+}
+.person-guest strong {
+  color: #f7dfaa;
+  font-size: 18px;
+}
+.person-guest span {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,.84);
+  font-size: 13px;
+  line-height: 1.4;
+}
 """
+)
 
 
 BIO = (
@@ -614,6 +834,14 @@ def shell(title: str, css: str, body: str) -> str:
 
 
 def panel_html() -> str:
+    guest_cards = "".join(
+        f"""<article class="guest-card">
+          <img src="../../{esc(photo)}" alt="{esc(name)}" />
+          <div class="name">{esc(name)}</div>
+          <div class="aff">{esc(aff)}</div>
+        </article>"""
+        for name, aff, photo in PANELISTS
+    )
     body = f"""
       <section class="panel-main">
         <div class="section-label">PANEL DISCUSSION</div>
@@ -636,13 +864,17 @@ def panel_html() -> str:
       </section>
       <section class="guest-box">
         <div class="section-label">PANELISTS</div>
-        <div class="text">嘉宾待定</div>
+        <div class="guest-grid">{guest_cards}</div>
       </section>
     """
     return shell("HCP 2026 · Panel Discussion", PANEL_CSS, body)
 
 
 def person_html() -> str:
+    guests = "".join(
+        f'<div class="person-guest"><strong>{esc(name)}</strong><span>{esc(aff)}</span></div>'
+        for name, aff, _ in PANELISTS
+    )
     body = f"""
       <section class="person-head">
         <img class="portrait" src="{PHOTO}" alt="陆品燕" />
@@ -660,6 +892,10 @@ def person_html() -> str:
         <h3>个人简介</h3>
         <div class="bio-card"><p>{esc(BIO)}</p></div>
       </section>
+      <section class="person-guests">
+        <h3>Panel 嘉宾</h3>
+        <div class="person-guest-grid">{guests}</div>
+      </section>
     """
     return shell("HCP 2026 · 陆品燕", PERSON_CSS, body)
 
@@ -667,7 +903,12 @@ def person_html() -> str:
 def clean_outputs() -> None:
     for directory in [HTML_DIR, PNG_DIR, JPG_DIR, PDF_DIR, ZIP_DIR, TMP_DIR]:
         directory.mkdir(parents=True, exist_ok=True)
-    for directory, pattern in [(HTML_DIR, "*.html"), (PNG_DIR, "*.png"), (JPG_DIR, "*.jpg"), (PDF_DIR, "*.pdf")]:
+    for directory, pattern in [
+        (HTML_DIR, "*.html"),
+        (PNG_DIR, "*.png"),
+        (JPG_DIR, "*.jpg"),
+        (PDF_DIR, "*.pdf"),
+    ]:
         for path in directory.glob(pattern):
             path.unlink()
     for path in ZIP_DIR.glob("*.zip"):
@@ -715,7 +956,13 @@ def render_html(path: Path, png_out: Path) -> None:
         f"--screenshot={png_out}",
         html_file_url(path),
     ]
-    subprocess.run(cmd, check=True, timeout=40, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(
+        cmd,
+        check=True,
+        timeout=40,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
     shutil.rmtree(user_data_dir, ignore_errors=True)
     with Image.open(png_out) as img:
         if img.size != POSTER_SIZE:
@@ -735,7 +982,9 @@ def export_from_png(png_path: Path) -> tuple[Path, Path]:
 
 
 def zip_dir(zip_name: str, directory: Path, pattern: str) -> None:
-    with zipfile.ZipFile(ZIP_DIR / zip_name, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+    with zipfile.ZipFile(
+        ZIP_DIR / zip_name, "w", compression=zipfile.ZIP_DEFLATED
+    ) as zf:
         for file in sorted(directory.glob(pattern)):
             zf.write(file, arcname=file.name)
 
