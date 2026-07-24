@@ -383,6 +383,22 @@ AGENDA_CSS = """
 .agenda-table .panel-meta span {
   color: #333844;
 }
+.agenda-card.ai .agenda-head {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+.agenda-card.ai .agenda-table td {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.agenda-card.ai .agenda-table .panel td {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.agenda-card.ai .agenda-table .panel-meta {
+  font-size: 11px;
+  line-height: 1.18;
+}
 """
 
 
@@ -780,7 +796,7 @@ AGENDA_BLOCKS = [
         ],
     },
     {
-        "cls": "",
+        "cls": "ai",
         "date": "8月1日 下午",
         "place": "人工智能专题",
         "rows": [
