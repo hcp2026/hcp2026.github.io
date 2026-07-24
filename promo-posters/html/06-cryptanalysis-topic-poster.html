@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HCP 2026 - 密码分析专题</title>
+  <style>
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #14090d;
+  font-family: "Hiragino Sans GB", "STHeiti", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  color: #17191f;
+}
+body {
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+}
+.poster {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(80, 12, 23, .92) 0%, rgba(124, 20, 39, .90) 38%, rgba(248, 241, 231, .96) 38.1%, rgba(255, 250, 243, 1) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center top / cover no-repeat;
+}
+.poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(216, 177, 95, .22), transparent 26%),
+    linear-gradient(135deg, rgba(255,255,255,.08), transparent 42%),
+    linear-gradient(180deg, rgba(79, 12, 23, .10), rgba(79, 12, 23, .02));
+  pointer-events: none;
+}
+.top-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: linear-gradient(90deg, #a71930 0%, #d8b15f 78%, #fff2cc 100%);
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 54px 58px 48px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: rgba(255,255,255,.92);
+}
+.brand img {
+  width: 236px;
+  filter: brightness(0) invert(1);
+}
+.brand .series {
+  margin-left: auto;
+  color: #f7dfaa;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 6px;
+}
+.hero-title {
+  margin-top: 34px;
+  color: #fff;
+}
+.hero-title .kicker {
+  color: #f7dfaa;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 12px;
+}
+.hero-title h1 {
+  margin: 16px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 104px;
+  line-height: .9;
+  letter-spacing: 2px;
+}
+.hero-title .cn {
+  margin-top: 14px;
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 900;
+}
+.hero-title .en {
+  margin-top: 6px;
+  width: 850px;
+  color: rgba(255,255,255,.74);
+  font-size: 18px;
+  line-height: 1.42;
+}
+.meta-strip {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+.meta-pill {
+  padding: 10px 16px;
+  color: #4f0c17;
+  background: #f4dfb0;
+  border-radius: 999px;
+  font-size: 19px;
+  font-weight: 900;
+}
+.content {
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  top: 520px;
+  bottom: 94px;
+}
+.footer {
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #761120;
+  border-top: 2px solid rgba(167,25,48,.24);
+  padding-top: 18px;
+  font-size: 20px;
+  font-weight: 900;
+}
+.footer .url {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 1px;
+}
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  color: #761120;
+}
+.section-title h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 900;
+  text-shadow: 0 6px 18px rgba(0,0,0,.22);
+}
+.section-title .en {
+  color: #d8b15f;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  color: #fff;
+  background: #a71930;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+.muted {
+  color: #69707d;
+}
+
+.keynote-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+.keynote-card {
+  display: grid;
+  grid-template-columns: 142px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 280px;
+  padding: 16px;
+  background: rgba(255,255,255,.90);
+  border: 1px solid rgba(167,25,48,.18);
+  border-radius: 17px;
+  box-shadow: 0 12px 34px rgba(79,12,23,.10);
+}
+.keynote-photo {
+  width: 142px;
+  height: 178px;
+  object-fit: cover;
+  object-position: center 42%;
+  border-radius: 12px;
+  border: 1px solid rgba(118,17,32,.18);
+}
+.keynote-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.keynote-name {
+  color: #761120;
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+.keynote-aff {
+  margin-top: 4px;
+  color: #69707d;
+  font-size: 15px;
+  font-weight: 800;
+}
+.keynote-talk {
+  margin-top: 9px;
+  color: #17191f;
+  font-size: 20px;
+  line-height: 1.28;
+  font-weight: 900;
+}
+.abstract-label {
+  margin-top: 10px;
+  color: #a2783c;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+.abstract {
+  margin-top: 5px;
+  color: #333844;
+  font-size: 15.8px;
+  line-height: 1.42;
+  text-align: justify;
+}
+.abstract p {
+  margin: 0;
+}
+
+body {
+  height: auto;
+  overflow: visible;
+}
+.topic-detail-poster {
+  height: 1700px;
+  background:
+    linear-gradient(180deg, rgba(80, 12, 23, .92) 0%, rgba(124, 20, 39, .90) 720px, rgba(248, 241, 231, .96) 722px, rgba(255, 250, 243, 1) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center top / cover no-repeat;
+}
+.topic-detail-poster.topic-combo {
+  height: 2400px;
+}
+.topic-detail-poster.topic-crypto {
+  height: 2400px;
+}
+.topic-detail-poster .content {
+  position: relative;
+  inset: auto;
+  margin-top: 78px;
+}
+.topic-detail-poster .keynote-list {
+  gap: 18px;
+}
+.topic-detail-poster .keynote-card {
+  grid-template-columns: 170px minmax(0, 1fr);
+  min-height: 0;
+  gap: 20px;
+  padding: 20px;
+}
+.topic-detail-poster .keynote-photo {
+  width: 170px;
+  height: 213px;
+}
+.topic-detail-poster .keynote-name {
+  font-size: 30px;
+}
+.topic-detail-poster .keynote-aff {
+  font-size: 16px;
+}
+.topic-detail-poster .keynote-talk {
+  font-size: 21px;
+  line-height: 1.32;
+}
+.topic-detail-poster .abstract-label {
+  margin-top: 12px;
+  font-size: 14px;
+}
+.topic-detail-poster .abstract {
+  font-size: 16.5px;
+  line-height: 1.48;
+}
+</style>
+</head>
+<body>
+  <article class="poster topic-detail-poster topic-crypto">
+    <div class="top-rule"></div>
+    <div class="inner">
+      <header class="brand">
+        <img src="../../assets/sdu-logo.svg" alt="山东大学" />
+        <div class="series">宣传海报</div>
+      </header>
+      <section class="hero-title">
+        <div class="kicker">第 九 届</div>
+        <h1>HCP 2026</h1>
+        <div class="cn">难解问题的理论、算法与应用研讨会</div>
+        <div class="meta-strip">
+          <div class="meta-pill">2026年7月31日-8月2日</div>
+          <div class="meta-pill">山东大学青岛校区</div>
+        </div>
+      </section>
+      <main class="content">
+        <div class="section-title"><h2>密码分析专题</h2><span class="en">4 位报告人</span></div>
+        <div class="keynote-list"><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/emanuele-bellini.jpeg" alt="Emanuele Bellini" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">Emanuele Bellini</div></div>
+    <div class="keynote-aff">阿联酋技术创新研究院（TII）</div>
+    <div class="keynote-talk">使用 CLAASP 生成并求解困难的对称密码分析问题</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>In 2023, we published a large-scale comparison of SAT, SMT, MILP, and CP techniques for differential cryptanalysis across more than 20 symmetric primitives and 16 solvers. The study highlighted that solver performance is highly problem-dependent, with different paradigms excelling on different cipher families and tasks.</p><p>Building on these results, this talk explores how to create public, reproducible benchmark challenges for symmetric cryptanalysis that are valuable to both solver developers and cryptanalysis researchers. We discuss the difficulties of defining fair and meaningful challenges across diverse attack models, cipher designs, solver paradigms, and evaluation criteria.</p><p>We then present how CLAASP can systematically support such an effort through automated generation of cryptanalytic models, scalable benchmark instances, and baseline evaluations across multiple solvers. The long-term objective is to foster a community-driven collection of solver-oriented symmetric cryptanalysis challenges and benchmarks.</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/chunning-zhou.jpg" alt="周春宁" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">周春宁</div></div>
+    <div class="keynote-aff">南洋理工大学</div>
+    <div class="keynote-talk">开放密码分析平台（OCP）：面向对称密码的自动化密码分析平台</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>随着对称密码算法应用广泛、结构设计日益多样化，自动化密码分析工具在效率、通用性和可扩展性方面面临更高要求。本报告介绍面向对称密码的自动化分析平台 OCP（Open Cryptanalysis Platform）的设计与应用。OCP将分组密码、置换和流密码统一表示为由变量与算子组成的轮/层结构，并在此基础上支持 Python、C 和 Verilog 可执行代码生成、结构可视化、面向密码分析的 MILP/SAT 模型构造以及外部求解器辅助搜索。面向 SPN、ARX 等典型结构，可自动搜索最小活跃 S 盒数量、最优及多条差分、线性和相关密钥差分特征，并通过聚集高概率差分特征或高绝对相关性线性特征来估计差分概率与线性壳相关性。针对 S 盒、异或等基础算子，提供多种 MILP/SAT 建模方法，并集成 Matsui 剪枝约束与基于目标界动态调整的 SAT 优化搜索策略，以提升长轮数搜索效率。目前，OCP已覆盖 AES、PRESENT、GIFT、SKINNY、SPECK 等典型对称密码原语，其模块化和可扩展设计支持新密码算法、新算子、新建模方法与新密码分析任务的快速集成，为对称密码安全评估提供统一平台。</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/xindi-zhang.png" alt="张昕荻" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">张昕荻</div></div>
+    <div class="keynote-aff">中国科学院软件研究所</div>
+    <div class="keynote-talk">SAT求解及其在密码分析中的应用</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>SAT是密码分析的重要基础工具，本报告将重点围绕其串、并行求解及LLM加速技术，介绍其在密码分析中的应用。串行求解方面，针对大规模约束冗余的方程组求解问题，本报告将介绍一种动态添加约束的增量求解方法，助力斩获「强网杯」冠军。并行求解方面，将介绍基于多样性与关键变量采样的分治并行求解技术。PRS求解器多次在国际竞赛中夺冠，在密码样例上实现千核规模持续加速，并应用于哈希碰撞分析。最后，介绍大模型辅助的并行SAT求解方法，并在ASCON线性分析中成功突破4轮最优活跃S盒边界。</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/yanhong-fan.jpg" alt="樊燕红" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">樊燕红</div></div>
+    <div class="keynote-aff">山东大学</div>
+    <div class="keynote-talk">对称密码的自动化分析与设计技术</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>对称密码的自动化分析与设计，是突破传统手工推导效率与规模瓶颈的核心路径，也是当前密码学领域最具挑战性的前沿方向之一。本次报告将系统梳理我们在此方向上的核心进展。内容涵盖：密码算法结构特征的自动化表征与理解、基于约束求解（SAT/SMT）的差分、线性及积分区分器的高效搜索方法、面向密码电路面积与时延的多目标优化设计，以及抗侧信道掩码方案的自动生成与评估。此外，我们还将展示自主研发的密码算法自动化测评平台，该平台已实现从分析到设计、从理论到工程的支撑。系列成果发表于EUROCRYPT、FSE、CHES等国际密码学顶级会议，并已在国家关键领域获得实际部署应用。</p></div>
+  </div>
+</article></div>
+      </main>
+      <footer class="footer">
+        <div>山东大学网络空间安全学院 · 青岛</div>
+        <div class="url">hcp2026.sincst.cn</div>
+      </footer>
+    </div>
+  </article>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HCP 2026 - 组合优化专题</title>
+  <style>
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #14090d;
+  font-family: "Hiragino Sans GB", "STHeiti", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  color: #17191f;
+}
+body {
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+}
+.poster {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(80, 12, 23, .92) 0%, rgba(124, 20, 39, .90) 38%, rgba(248, 241, 231, .96) 38.1%, rgba(255, 250, 243, 1) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center top / cover no-repeat;
+}
+.poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(216, 177, 95, .22), transparent 26%),
+    linear-gradient(135deg, rgba(255,255,255,.08), transparent 42%),
+    linear-gradient(180deg, rgba(79, 12, 23, .10), rgba(79, 12, 23, .02));
+  pointer-events: none;
+}
+.top-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: linear-gradient(90deg, #a71930 0%, #d8b15f 78%, #fff2cc 100%);
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 54px 58px 48px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: rgba(255,255,255,.92);
+}
+.brand img {
+  width: 236px;
+  filter: brightness(0) invert(1);
+}
+.brand .series {
+  margin-left: auto;
+  color: #f7dfaa;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 6px;
+}
+.hero-title {
+  margin-top: 34px;
+  color: #fff;
+}
+.hero-title .kicker {
+  color: #f7dfaa;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 12px;
+}
+.hero-title h1 {
+  margin: 16px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 104px;
+  line-height: .9;
+  letter-spacing: 2px;
+}
+.hero-title .cn {
+  margin-top: 14px;
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 900;
+}
+.hero-title .en {
+  margin-top: 6px;
+  width: 850px;
+  color: rgba(255,255,255,.74);
+  font-size: 18px;
+  line-height: 1.42;
+}
+.meta-strip {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+.meta-pill {
+  padding: 10px 16px;
+  color: #4f0c17;
+  background: #f4dfb0;
+  border-radius: 999px;
+  font-size: 19px;
+  font-weight: 900;
+}
+.content {
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  top: 520px;
+  bottom: 94px;
+}
+.footer {
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #761120;
+  border-top: 2px solid rgba(167,25,48,.24);
+  padding-top: 18px;
+  font-size: 20px;
+  font-weight: 900;
+}
+.footer .url {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 1px;
+}
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  color: #761120;
+}
+.section-title h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 900;
+  text-shadow: 0 6px 18px rgba(0,0,0,.22);
+}
+.section-title .en {
+  color: #d8b15f;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  color: #fff;
+  background: #a71930;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+.muted {
+  color: #69707d;
+}
+
+.keynote-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+.keynote-card {
+  display: grid;
+  grid-template-columns: 142px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 280px;
+  padding: 16px;
+  background: rgba(255,255,255,.90);
+  border: 1px solid rgba(167,25,48,.18);
+  border-radius: 17px;
+  box-shadow: 0 12px 34px rgba(79,12,23,.10);
+}
+.keynote-photo {
+  width: 142px;
+  height: 178px;
+  object-fit: cover;
+  object-position: center 42%;
+  border-radius: 12px;
+  border: 1px solid rgba(118,17,32,.18);
+}
+.keynote-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.keynote-name {
+  color: #761120;
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+.keynote-aff {
+  margin-top: 4px;
+  color: #69707d;
+  font-size: 15px;
+  font-weight: 800;
+}
+.keynote-talk {
+  margin-top: 9px;
+  color: #17191f;
+  font-size: 20px;
+  line-height: 1.28;
+  font-weight: 900;
+}
+.abstract-label {
+  margin-top: 10px;
+  color: #a2783c;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+.abstract {
+  margin-top: 5px;
+  color: #333844;
+  font-size: 15.8px;
+  line-height: 1.42;
+  text-align: justify;
+}
+.abstract p {
+  margin: 0;
+}
+
+body {
+  height: auto;
+  overflow: visible;
+}
+.topic-detail-poster {
+  height: 1700px;
+  background:
+    linear-gradient(180deg, rgba(80, 12, 23, .92) 0%, rgba(124, 20, 39, .90) 720px, rgba(248, 241, 231, .96) 722px, rgba(255, 250, 243, 1) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center top / cover no-repeat;
+}
+.topic-detail-poster.topic-combo {
+  height: 2400px;
+}
+.topic-detail-poster.topic-crypto {
+  height: 2400px;
+}
+.topic-detail-poster .content {
+  position: relative;
+  inset: auto;
+  margin-top: 78px;
+}
+.topic-detail-poster .keynote-list {
+  gap: 18px;
+}
+.topic-detail-poster .keynote-card {
+  grid-template-columns: 170px minmax(0, 1fr);
+  min-height: 0;
+  gap: 20px;
+  padding: 20px;
+}
+.topic-detail-poster .keynote-photo {
+  width: 170px;
+  height: 213px;
+}
+.topic-detail-poster .keynote-name {
+  font-size: 30px;
+}
+.topic-detail-poster .keynote-aff {
+  font-size: 16px;
+}
+.topic-detail-poster .keynote-talk {
+  font-size: 21px;
+  line-height: 1.32;
+}
+.topic-detail-poster .abstract-label {
+  margin-top: 12px;
+  font-size: 14px;
+}
+.topic-detail-poster .abstract {
+  font-size: 16.5px;
+  line-height: 1.48;
+}
+</style>
+</head>
+<body>
+  <article class="poster topic-detail-poster topic-combo">
+    <div class="top-rule"></div>
+    <div class="inner">
+      <header class="brand">
+        <img src="../../assets/sdu-logo.svg" alt="山东大学" />
+        <div class="series">宣传海报</div>
+      </header>
+      <section class="hero-title">
+        <div class="kicker">第 九 届</div>
+        <h1>HCP 2026</h1>
+        <div class="cn">难解问题的理论、算法与应用研讨会</div>
+        <div class="meta-strip">
+          <div class="meta-pill">2026年7月31日-8月2日</div>
+          <div class="meta-pill">山东大学青岛校区</div>
+        </div>
+      </section>
+      <main class="content">
+        <div class="section-title"><h2>组合优化专题</h2><span class="en">5 位报告人</span></div>
+        <div class="keynote-list"><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/yixin-cao.jpeg" alt="操宜新" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">操宜新</div></div>
+    <div class="keynote-aff">香港理工大学计算学系</div>
+    <div class="keynote-talk">线性系统的半整数解</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>Most combinatorial optimization problems are NP-hard, which means their integer programming formulations typically lack the total dual integrality property. In the 1970s, Balinski observed that all extreme points of the fractional independent set polytope are half-integral. In this work, we explore further developments in this area. Additionally, we provide a brief discussion on employing graph-theoretical approaches to solve integer programs.</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/zhendong-lei.jpg" alt="雷震东" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">雷震东</div></div>
+    <div class="keynote-aff">华为泰勒实验室</div>
+    <div class="keynote-talk">从工业应用看模型表达能力与算法设计</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>随着各领域业务的发展，实际工业问题的规模呈指数级增长，其内在约束与耦合关系日益复杂。这往往导致直接构建的单一数学模型（如混合整数线性规划MILP）面临变量与约束规模爆炸的难题，致使求解难度陡增，甚至无法求解。而当前主流求解器技术多针对特定范式（如SAT、MIP等）独立设计，难以应对此类复杂场景。本报告将从工业应用视角出发，剖析实际场景中蕴含的复杂约束特征，深入探讨模型表达能力与算法设计在实际落地中的权衡关系及效能表现。最后，本报告将介绍泰勒实验室在该方向上的探索与最新研究进展。</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/shengxin-liu.jpg" alt="刘圣鑫" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">刘圣鑫</div></div>
+    <div class="keynote-aff">哈尔滨工业大学（深圳）计算机科学与技术学院</div>
+    <div class="keynote-talk">最大凝聚子图搜索的分支定界算法</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>Finding maximum cohesive subgraphs is a fundamental problem in graph mining, with applications in community detection, social network analysis, and related areas. This talk presents our recent work on efficient branch-and-bound algorithms for maximum cohesive subgraph search. The talk covers five representative models-k-plex, defective clique, s-bundle, degree-based quasi-clique, and edge-based quasi-clique-each providing a different relaxation of the maximum clique model. I will discuss the main algorithmic techniques, including effective branching strategies, reduction rules, and upper bounds, underlying our results published in SIGMOD'25, PVLDB'25, KDD'25, PVLDB'26, and WWW'26. I will conclude with several directions for future research.</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/hu-qin.jpeg" alt="秦虎" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">秦虎</div></div>
+    <div class="keynote-aff">华中科技大学管理学院</div>
+    <div class="keynote-talk">车辆路径优化算法：现状、挑战和实践</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>本次报告深度聚焦车辆路径优化（VRP）领域，系统解析精确算法与启发式算法的核心分类、底层原理及各自优劣。针对传统方案定制成本高、通用性差的行业痛点，报告创新性地提出「算法框架+独立约束」的灵活求解策略，有效兼顾了运算效率与场景适配性。此外，结合制药企业多模式运输等真实案例，生动展现了该方案在多仓库、多车型、多时间窗等复杂业务场景下的落地成效，切实助力企业降本增效，兼具学术前沿深度与产业实践价值。最后，报告将以可拆分车辆路径优化问题（SDVRP）为例，深入剖析并系统分享启发式算法的核心设计技巧与实战经验。</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/yixiao-huang.jpeg" alt="黄一潇" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">黄一潇</div></div>
+    <div class="keynote-aff">顺丰科技</div>
+    <div class="keynote-talk">顺丰智能物流网络规划技术分享</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>中国快递市场规模庞大，2025年全年快递业务量接近2000亿件。背后的快递运营网络结构复杂，需要综合权衡服务水平、运营成本等诸多因素。报告阐述如何进行智能物流网络优化的方法论和企业实践。内部团队深入理解实际复杂业务，从中剥离核心数学优化问题，综合分析问题性质和前沿技术方法。利用运筹优化模型显著优化物流网络，支持物流网络重要战略决策，提升决策效率和质量，显著减少碳排放。</p></div>
+  </div>
+</article></div>
+      </main>
+      <footer class="footer">
+        <div>山东大学网络空间安全学院 · 青岛</div>
+        <div class="url">hcp2026.sincst.cn</div>
+      </footer>
+    </div>
+  </article>
+</body>
+</html>

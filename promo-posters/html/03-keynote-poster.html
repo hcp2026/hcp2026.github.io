@@ -238,10 +238,53 @@ body {
 .abstract p {
   margin: 0;
 }
+
+body {
+  height: auto;
+  overflow: visible;
+}
+.long-keynote-poster {
+  height: 2400px;
+  background:
+    linear-gradient(180deg, rgba(80, 12, 23, .92) 0%, rgba(124, 20, 39, .90) 720px, rgba(248, 241, 231, .96) 722px, rgba(255, 250, 243, 1) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center top / cover no-repeat;
+}
+.long-keynote-poster .content {
+  position: relative;
+  inset: auto;
+  margin-top: 78px;
+}
+.long-keynote-poster .keynote-list {
+  gap: 18px;
+}
+.long-keynote-poster .keynote-card {
+  grid-template-columns: 170px minmax(0, 1fr);
+  min-height: 0;
+  gap: 20px;
+  padding: 20px;
+}
+.long-keynote-poster .keynote-photo {
+  width: 170px;
+  height: 213px;
+}
+.long-keynote-poster .keynote-name {
+  font-size: 30px;
+}
+.long-keynote-poster .keynote-aff {
+  font-size: 16px;
+}
+.long-keynote-poster .keynote-talk {
+  font-size: 21px;
+  line-height: 1.32;
+}
+.long-keynote-poster .abstract {
+  font-size: 16.5px;
+  line-height: 1.48;
+}
 </style>
 </head>
 <body>
-  <article class="poster">
+  <article class="poster long-keynote-poster">
     <div class="top-rule"></div>
     <div class="inner">
       <header class="brand">
@@ -266,7 +309,7 @@ body {
     <div class="keynote-aff">中国科学院数学与系统科学研究院</div>
     <div class="keynote-talk">大规模设施选址问题的精确求解</div>
     <div class="abstract-label">报告摘要</div>
-    <div class="abstract"><p>In this talk, we develop exact solution methods for large-scale facility location problems. First, we present algorithms based on decomposition techniques, including Benders decomposition and submodular decomposition, and apply them to large-scale probabilistic set covering and competitive facility location problems. We introduce customized cutting planes and efficient separation procedures, and demonstrate how these algorithms can be integrated into modern mixed-integer programming (MIP) solvers to obtain exact solutions efficiently for large-scale problems.</p></div>
+    <div class="abstract"><p>In this talk, we develop exact solution methods for large-scale facility location problems. First, we present algorithms based on decomposition techniques, including Benders decomposition and submodular decomposition, and apply them to large-scale probabilistic set covering and competitive facility location problems. We introduce customized cutting planes and efficient separation procedures, and demonstrate how these algorithms can be integrated into modern mixed-integer programming (MIP) solvers to obtain exact solutions efficiently for large-scale problems.</p><p>Second, we develop tailored preprocessing and cutting plane techniques for covering location problems. These techniques can be incorporated into modern MIP solvers' framework either a priori or dynamically during the search, enabling the efficient solution of large-scale covering location problems.</p></div>
   </div>
 </article><article class="keynote-card">
   <img class="keynote-photo" src="../../assets/speakers/naijun-zhan.jpeg" alt="詹乃军" />
@@ -275,7 +318,7 @@ body {
     <div class="keynote-aff">北京大学计算机学院</div>
     <div class="keynote-talk">On termination of polynomial programs with equality conditions</div>
     <div class="abstract-label">报告摘要</div>
-    <div class="abstract"><p>We investigate termination of multi-path polynomial programs over an effective field, where assignments are polynomials and guards are polynomial equalities. We show that the set of non-terminating inputs is algorithmically computable, yielding decidability for a given input and for semi-algebraic input sets over R.</p></div>
+    <div class="abstract"><p>We investigate the termination problem of a family of multi-path polynomial programs (MPPs) over an effective field K, in which all assignments to program variables are polynomials, and test conditions of loops and conditional statements are polynomial equalities. We show that the set of non-terminating inputs (NTI) of such a program is algorithmically computable, which in turn yields the decidability of its termination on a given input - and that on a semi-algebraic set of inputs when K is R. To the best of our knowledge, the considered family of MPPs is hitherto the largest fragment of nonlinear programs for which termination is decidable. We present an explicit recursive function, essentially of Ackermannian growth, to compute the maximal length of ascending chains of polynomial ideals under a control function, thereby providing a complete answer to the questions raised by Seidenberg. This maximal length facilitates a precise complexity analysis of our algorithms for computing the NTI and deciding termination of MPPs. We further extend our approach to programs with polynomial guarded commands and show how an incomplete procedure for MPPs with inequality guards can be obtained. Finally, we show that our decidability result gives rise to a complete method for computing all polynomial equality invariants (of a fixed degree) of polynomial programs.</p></div>
   </div>
 </article><article class="keynote-card">
   <img class="keynote-photo" src="../../assets/speakers/xiaoming-sun.png" alt="孙晓明" />

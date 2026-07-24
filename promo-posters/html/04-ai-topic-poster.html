@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HCP 2026 - 人工智能专题</title>
+  <style>
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #14090d;
+  font-family: "Hiragino Sans GB", "STHeiti", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  color: #17191f;
+}
+body {
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+}
+.poster {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(80, 12, 23, .92) 0%, rgba(124, 20, 39, .90) 38%, rgba(248, 241, 231, .96) 38.1%, rgba(255, 250, 243, 1) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center top / cover no-repeat;
+}
+.poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(216, 177, 95, .22), transparent 26%),
+    linear-gradient(135deg, rgba(255,255,255,.08), transparent 42%),
+    linear-gradient(180deg, rgba(79, 12, 23, .10), rgba(79, 12, 23, .02));
+  pointer-events: none;
+}
+.top-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: linear-gradient(90deg, #a71930 0%, #d8b15f 78%, #fff2cc 100%);
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 54px 58px 48px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: rgba(255,255,255,.92);
+}
+.brand img {
+  width: 236px;
+  filter: brightness(0) invert(1);
+}
+.brand .series {
+  margin-left: auto;
+  color: #f7dfaa;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 6px;
+}
+.hero-title {
+  margin-top: 34px;
+  color: #fff;
+}
+.hero-title .kicker {
+  color: #f7dfaa;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 12px;
+}
+.hero-title h1 {
+  margin: 16px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 104px;
+  line-height: .9;
+  letter-spacing: 2px;
+}
+.hero-title .cn {
+  margin-top: 14px;
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 900;
+}
+.hero-title .en {
+  margin-top: 6px;
+  width: 850px;
+  color: rgba(255,255,255,.74);
+  font-size: 18px;
+  line-height: 1.42;
+}
+.meta-strip {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+.meta-pill {
+  padding: 10px 16px;
+  color: #4f0c17;
+  background: #f4dfb0;
+  border-radius: 999px;
+  font-size: 19px;
+  font-weight: 900;
+}
+.content {
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  top: 520px;
+  bottom: 94px;
+}
+.footer {
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #761120;
+  border-top: 2px solid rgba(167,25,48,.24);
+  padding-top: 18px;
+  font-size: 20px;
+  font-weight: 900;
+}
+.footer .url {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 1px;
+}
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  color: #761120;
+}
+.section-title h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 900;
+  text-shadow: 0 6px 18px rgba(0,0,0,.22);
+}
+.section-title .en {
+  color: #d8b15f;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  color: #fff;
+  background: #a71930;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+.muted {
+  color: #69707d;
+}
+
+.keynote-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+.keynote-card {
+  display: grid;
+  grid-template-columns: 142px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 280px;
+  padding: 16px;
+  background: rgba(255,255,255,.90);
+  border: 1px solid rgba(167,25,48,.18);
+  border-radius: 17px;
+  box-shadow: 0 12px 34px rgba(79,12,23,.10);
+}
+.keynote-photo {
+  width: 142px;
+  height: 178px;
+  object-fit: cover;
+  object-position: center 42%;
+  border-radius: 12px;
+  border: 1px solid rgba(118,17,32,.18);
+}
+.keynote-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.keynote-name {
+  color: #761120;
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+.keynote-aff {
+  margin-top: 4px;
+  color: #69707d;
+  font-size: 15px;
+  font-weight: 800;
+}
+.keynote-talk {
+  margin-top: 9px;
+  color: #17191f;
+  font-size: 20px;
+  line-height: 1.28;
+  font-weight: 900;
+}
+.abstract-label {
+  margin-top: 10px;
+  color: #a2783c;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+.abstract {
+  margin-top: 5px;
+  color: #333844;
+  font-size: 15.8px;
+  line-height: 1.42;
+  text-align: justify;
+}
+.abstract p {
+  margin: 0;
+}
+
+body {
+  height: auto;
+  overflow: visible;
+}
+.topic-detail-poster {
+  height: 1700px;
+  background:
+    linear-gradient(180deg, rgba(80, 12, 23, .92) 0%, rgba(124, 20, 39, .90) 720px, rgba(248, 241, 231, .96) 722px, rgba(255, 250, 243, 1) 100%),
+    url("../../assets/sdu-qingdao-library-hero.jpg") center top / cover no-repeat;
+}
+.topic-detail-poster.topic-combo {
+  height: 2400px;
+}
+.topic-detail-poster.topic-crypto {
+  height: 2400px;
+}
+.topic-detail-poster .content {
+  position: relative;
+  inset: auto;
+  margin-top: 78px;
+}
+.topic-detail-poster .keynote-list {
+  gap: 18px;
+}
+.topic-detail-poster .keynote-card {
+  grid-template-columns: 170px minmax(0, 1fr);
+  min-height: 0;
+  gap: 20px;
+  padding: 20px;
+}
+.topic-detail-poster .keynote-photo {
+  width: 170px;
+  height: 213px;
+}
+.topic-detail-poster .keynote-name {
+  font-size: 30px;
+}
+.topic-detail-poster .keynote-aff {
+  font-size: 16px;
+}
+.topic-detail-poster .keynote-talk {
+  font-size: 21px;
+  line-height: 1.32;
+}
+.topic-detail-poster .abstract-label {
+  margin-top: 12px;
+  font-size: 14px;
+}
+.topic-detail-poster .abstract {
+  font-size: 16.5px;
+  line-height: 1.48;
+}
+</style>
+</head>
+<body>
+  <article class="poster topic-detail-poster topic-ai">
+    <div class="top-rule"></div>
+    <div class="inner">
+      <header class="brand">
+        <img src="../../assets/sdu-logo.svg" alt="山东大学" />
+        <div class="series">宣传海报</div>
+      </header>
+      <section class="hero-title">
+        <div class="kicker">第 九 届</div>
+        <h1>HCP 2026</h1>
+        <div class="cn">难解问题的理论、算法与应用研讨会</div>
+        <div class="meta-strip">
+          <div class="meta-pill">2026年7月31日-8月2日</div>
+          <div class="meta-pill">山东大学青岛校区</div>
+        </div>
+      </section>
+      <main class="content">
+        <div class="section-title"><h2>人工智能专题</h2><span class="en">3 位报告人</span></div>
+        <div class="keynote-list"><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/mingxuan-yuan.jpg" alt="袁明轩" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">袁明轩</div></div>
+    <div class="keynote-aff">华为诺亚方舟实验室 / 香港诺亚方舟实验室</div>
+    <div class="keynote-talk">基于大模型的自动算法设计</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>过去两年间，基于大模型的自动算法设计方法取得了显著进展，缓解了工业优化问题长期存在的高定制化成本挑战，并有望在优化效率和有效性方面实现阶跃式提升。本次报告将重点介绍基于大模型的自动算法领域的一些探索与进展，包括算法设计空间理解、启发式算法的自动进化框架、基于多模态的算法设计、多分布下的协同进化自动算法设计等，并展示我们最新的LLM4AD Next工具。</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/zhaoguo-wang.jpeg" alt="王肇国" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">王肇国</div></div>
+    <div class="keynote-aff">上海交通大学</div>
+    <div class="keynote-talk">FM-Agent：面向大型系统软件的霍尔范式自动化推理智能体及领域实战</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>如今的Coding Agent生成十万行以上的系统级代码，甚至构建一个完整的编译器，都已不再稀奇。但一个严峻的挑战随之而来：如何保障这些大规模代码的正确性？为此，我们推出了形式化方法智能体FM-Agent，通过将霍尔逻辑与LLM结合，首次实现了面向大规模软件的全自动正确性推理，在 Anthropic、NVIDIA 等用顶尖编程智能体生成的多个大规模系统（单个系统规模高达 14.3 万行）中，FM-Agent 报告了 522 个潜在 bug。值得关注的是，这些 bug 经过单元测试、差分测试、多智能体交叉审查等手段都未能发现。本次报告将向大家分享FM-Agent的最新进展，以及面向编译器、数据库等系统的实战经验。</p></div>
+  </div>
+</article><article class="keynote-card">
+  <img class="keynote-photo" src="../../assets/speakers/min-li.png" alt="李旻" />
+  <div>
+    <div class="keynote-name-row"><span class="tag">专题报告</span><div class="keynote-name">李旻</div></div>
+    <div class="keynote-aff">东南大学集成电路学院</div>
+    <div class="keynote-talk">面向硬件形式化难例求解的智能体路线</div>
+    <div class="abstract-label">报告摘要</div>
+    <div class="abstract"><p>硬件形式化验证在复杂芯片设计中承担着发现深层缺陷、保证功能正确性的关键作用，但在实际应用中仍面临状态空间巨大、性质数量庞大、跨抽象层语义差异明显、人工调试成本高等难题。特别是在数据通路电路、多属性验证、等价检查与网表级分析场景中，传统求解流程往往依赖专家经验进行建模、分解、调参和反例分析，难以形成高度自动化、可扩展的验证闭环。本报告围绕「面向硬件形式化难例求解的智能体路线」展开，探讨如何将形式化验证工具、EDA 算法、大模型与电路表征学习结合起来，构建面向难例求解的智能验证系统。报告将结合数据通路等价验证、形式化 bug hunting、RTL 代码演化以及门级网表智能体等研究探索，介绍智能体如何参与电路语义理解、任务分解、求解策略选择、反例分析与代码修复。</p></div>
+  </div>
+</article></div>
+      </main>
+      <footer class="footer">
+        <div>山东大学网络空间安全学院 · 青岛</div>
+        <div class="url">hcp2026.sincst.cn</div>
+      </footer>
+    </div>
+  </article>
+</body>
+</html>
